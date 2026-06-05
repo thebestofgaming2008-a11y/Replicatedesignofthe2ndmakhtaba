@@ -1,501 +1,493 @@
-import { useState } from "react";
-import { ChevronDown, ChevronRight, Menu, Search, ShoppingCart, ChevronLeft } from "lucide-react";
+import svgPaths from "../imports/IPhone16114-1/svg-er0pvt7lmo";
+import imgLogo from "../imports/IPhone16114-1/1f078f66de22c88e6a47117f073725c1cd3c2f37.png";
+import imgLogo1 from "../imports/IPhone16114-1/ccf3dd809cdd1e0e30aa10dec48a2c7fd354e933.png";
 
-// ── Inline SVG icons matching the Figma design ──────────────────────────────
+// ─────────────────────────────────────────────────────────────
+// Sub-components (verbatim from Figma import)
+// ─────────────────────────────────────────────────────────────
 
-function BookCheckIcon() {
+function HeaderContainer() {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path
-        d="M4 2.5h12a1.5 1.5 0 011.5 1.5v15A1.5 1.5 0 0116 20.5H4A1.5 1.5 0 012.5 19V4A1.5 1.5 0 014 2.5z"
-        stroke="#885926"
-        strokeWidth="1"
-      />
-      <path d="M8 12l2.5 2.5L14.5 10" stroke="#885926" strokeWidth="1" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function LocationPinIcon() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path
-        d="M12 2.5C8.41 2.5 5.5 5.41 5.5 9c0 5.25 6.5 12 6.5 12s6.5-6.75 6.5-12c0-3.59-2.91-6.5-6.5-6.5z"
-        stroke="#885926"
-        strokeWidth="1"
-      />
-      <circle cx="12" cy="9" r="2.5" stroke="#885926" strokeWidth="1" />
-      <path d="M6.5 20.5c0 .83 2.46 1.5 5.5 1.5s5.5-.67 5.5-1.5" stroke="#885926" strokeWidth="1" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function BookOpenIcon() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path d="M12 4.5V19.5" stroke="#885926" strokeWidth="1" strokeLinecap="round" />
-      <path d="M3.5 4.5V18" stroke="#885926" strokeWidth="1" strokeLinecap="round" />
-      <path d="M20.5 4.5V18" stroke="#885926" strokeWidth="1" strokeLinecap="round" />
-      <path d="M12 19.5c0 0 2.5-1 8.5-1.5" stroke="#885926" strokeWidth="1" strokeLinecap="round" />
-      <path d="M12 19.5c0 0-2.5-1-8.5-1.5" stroke="#885926" strokeWidth="1" strokeLinecap="round" />
-      <path d="M12 6.5c0 0 2.5-1.5 8.5-2" stroke="#885926" strokeWidth="1" strokeLinecap="round" />
-      <path d="M12 6.5c0 0-2.5-1.5-8.5-2" stroke="#885926" strokeWidth="1" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-// ── Reusable product card shapes ─────────────────────────────────────────────
-
-function WhiteCard({ h = 300 }: { h?: number }) {
-  return <div className="bg-white shrink-0" style={{ height: h }} />;
-}
-
-function GrayCard({ h = 300 }: { h?: number }) {
-  return <div className="bg-[#f3f3f3] shrink-0" style={{ height: h }} />;
-}
-
-// ── Logo placeholder (no image file on disk) ─────────────────────────────────
-
-function LogoMark({ light = false }: { light?: boolean }) {
-  return (
-    <div
-      className="flex items-center justify-center"
-      style={{ height: 45, width: 92 }}
-    >
-      <svg viewBox="0 0 92 45" fill="none" className="w-full h-full">
-        <text
-          x="46"
-          y="30"
-          textAnchor="middle"
-          fontFamily="Playfair Display, serif"
-          fontSize="18"
-          fontWeight="400"
-          fill={light ? "#ffffff" : "#885926"}
-        >
-          مكتبة
-        </text>
-        <text
-          x="46"
-          y="44"
-          textAnchor="middle"
-          fontFamily="Playfair Display, serif"
-          fontSize="9"
-          fill={light ? "rgba(255,253,245,0.8)" : "#867461"}
-          letterSpacing="1"
-        >
-          BOOKSTORE
-        </text>
-      </svg>
+    <div className="absolute h-[57px] left-0 top-[72px] w-[393px]" data-name="Header container">
+      <div className="absolute inset-[-0.88%_-0.13%]">
+        <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 394 58">
+          <g id="Header container">
+            <rect fill="#FFFDF5" fillOpacity="0.8" height="57.5" stroke="#A2A2A2" strokeWidth="0.5" width="393.5" x="0.25" y="0.25" />
+            {/* hamburger */}
+            <path d={svgPaths.p22163d80} fill="#111111" />
+            {/* search */}
+            <path d={svgPaths.p1b26d480} fill="#111111" />
+            {/* cart */}
+            <path d={svgPaths.p3b9806e0} fill="#111111" />
+            {/* person */}
+            <path d={svgPaths.p36724df0} fill="#111111" />
+          </g>
+        </svg>
+      </div>
     </div>
   );
 }
 
-function LogoMarkLarge({ light = false }: { light?: boolean }) {
+function NextButtonRight() {
   return (
-    <div className="flex items-center" style={{ height: 66, width: 135 }}>
-      <svg viewBox="0 0 135 66" fill="none" className="w-full h-full">
-        <text
-          x="10"
-          y="38"
-          fontFamily="Playfair Display, serif"
-          fontSize="24"
-          fontWeight="400"
-          fill={light ? "#ffffff" : "#885926"}
-        >
-          مكتبة
-        </text>
-        <text
-          x="10"
-          y="56"
-          fontFamily="Playfair Display, serif"
-          fontSize="12"
-          fill={light ? "rgba(255,253,245,0.8)" : "#867461"}
-          letterSpacing="1"
-        >
-          BOOKSTORE
-        </text>
-      </svg>
+    <div className="bg-white relative rounded-[26.087px] shadow-[0px_1px_0px_0px_rgba(0,0,0,0.25)] size-[15px]">
+      <div className="flex flex-row items-center justify-center size-full">
+        <div className="relative size-full" />
+      </div>
     </div>
   );
 }
 
-// ── Section heading pattern ──────────────────────────────────────────────────
-
-function SectionHeader({
-  title,
-  viewAll = false,
-  light = false,
-}: {
-  title: string;
-  viewAll?: boolean;
-  light?: boolean;
-}) {
+function IconContainer() {
   return (
-    <div className="flex items-baseline justify-between mb-3">
-      <p
-        className="font-['Playfair_Display',serif] text-[25px] leading-[0.95] tracking-[-1.5px]"
-        style={{ color: light ? "#ffffff" : "#111111" }}
-      >
-        {title}
-      </p>
-      {viewAll && (
-        <span
-          className="font-['Playfair_Display',serif] text-[10px] leading-[1.53] tracking-[-0.3px]"
-          style={{ color: light ? "#ffffff" : "#111111" }}
-        >
-          View all
-        </span>
-      )}
-    </div>
-  );
-}
-
-// ── FAQ Item ─────────────────────────────────────────────────────────────────
-
-function FaqItem({ question, open, onToggle }: { question: string; open: boolean; onToggle: () => void }) {
-  return (
-    <div>
-      <button
-        onClick={onToggle}
-        className="w-full bg-[#f3f3f3] h-[41px] flex items-center justify-between px-4"
-        style={{ marginBottom: 1 }}
-      >
-        <p className="font-['Playfair_Display',serif] text-black text-[20px] leading-[0.95] tracking-[-1.2px]">
-          {question}
-        </p>
-        <ChevronDown
-          size={15}
-          className="text-[#1D1B20] transition-transform duration-200 shrink-0"
-          style={{ transform: open ? "rotate(0deg)" : "rotate(180deg)" }}
-        />
-      </button>
-      {open && (
-        <div className="bg-[#f3f3f3] px-4 py-3 border-t border-[#e0e0e0]" style={{ marginBottom: 1 }}>
-          <p className="font-['Playfair_Display',serif] text-black text-[14px] leading-[1.5]">
-            Our checkout process is simple and secure. Add items to your cart, proceed to checkout,
-            enter your shipping details, and complete payment. You will receive a confirmation email once your order is placed.
-          </p>
-        </div>
-      )}
-    </div>
-  );
-}
-
-// ── Main App ─────────────────────────────────────────────────────────────────
-
-export default function App() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [activeCategory, setActiveCategory] = useState(0);
-
-  const categories = ["Aqeedah", "Hadith", "Fiqh"];
-
-  const faqItems = [
-    "How does checkout work?",
-    "How does checkout work?",
-    "How does checkout work?",
-    "How does checkout work?",
-    "How does checkout work?",
-  ];
-
-  return (
-    /* Outer centering shell – on wide screens the phone sits centered */
-    <div className="min-h-screen bg-[#e8e4de] flex items-start justify-center py-0">
-      {/* Phone frame – 393 px wide, matches the Figma iPhone 16 artboard */}
-      <div
-        className="relative bg-[#fffdf5] overflow-x-hidden"
-        style={{ width: 393, minHeight: "100vh" }}
-      >
-        {/* ── NOTIFICATION BAR ─────────────────────────────────────── */}
-        <div className="bg-[#885926] h-10 w-full flex items-center px-4 gap-2">
-          <p
-            className="flex-1 text-white text-center font-['Playfair_Display',serif] text-[12px] tracking-[-0.72px] leading-[0.95]"
-            dir="auto"
-          >
-            International order fees added on whatspp
-          </p>
-          <div className="flex items-center gap-1 shrink-0">
-            <ChevronDown size={11} className="text-white -rotate-90" />
-            <span className="text-white text-[12px] font-['Playfair',serif]">INR</span>
-            <span className="text-white text-[10px]">₹</span>
-          </div>
-        </div>
-
-        {/* ── HEADER ───────────────────────────────────────────────── */}
-        <div
-          className="sticky top-0 z-50 flex items-center justify-between px-4"
-          style={{
-            height: 57,
-            background: "rgba(255,253,245,0.8)",
-            backdropFilter: "blur(8px)",
-            borderBottom: "0.5px solid #a2a2a2",
-          }}
-        >
-          <div className="flex items-center gap-4">
-            <Menu size={20} className="text-[#111111]" />
-            <Search size={20} className="text-[#111111]" />
-          </div>
-          <LogoMark />
-          <div className="flex items-center gap-4">
-            <ShoppingCart size={20} className="text-[#111111]" />
-            {/* Globe/language icon */}
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <circle cx="10" cy="10" r="8.5" stroke="#111111" strokeWidth="1.2" />
-              <path d="M10 1.5C10 1.5 7 5 7 10s3 8.5 3 8.5M10 1.5C10 1.5 13 5 13 10s-3 8.5-3 8.5" stroke="#111111" strokeWidth="1.2" />
-              <path d="M1.5 10h17M2 7h16M2 13h16" stroke="#111111" strokeWidth="1.2" strokeLinecap="round" />
+    <div className="absolute content-stretch flex gap-[93px] items-center left-[68px] top-[546px]">
+      {/* Book Check Icon */}
+      <div className="relative shrink-0 size-[24px]">
+        <div className="absolute inset-[12.5%_16.67%]">
+          <div className="absolute inset-[-2.78%_-3.12%_-2.78%_-3.13%]">
+            <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 17 19">
+              <path d={svgPaths.p2a2acd80} stroke="#885926" />
             </svg>
           </div>
         </div>
-
-        {/* ── HERO SECTION ─────────────────────────────────────────── */}
-        <div className="bg-[#fffdf5] px-[80px] pt-[78px] pb-6" style={{ position: "relative" }}>
-          <p
-            className="font-['Playfair_Display',serif] font-normal text-[#885926] text-[40px] leading-[0.95] tracking-[-2.4px]"
-            style={{ wordBreak: "break-word" }}
-          >
-            Finally afford
-          </p>
-          <p
-            className="font-['Playfair_Display',serif] font-normal italic text-[#885926] text-[42px] leading-[0.95] tracking-[-2.52px] text-center mt-1"
-            style={{ wordBreak: "break-word" }}
-          >
-            Beneficial knowledge
-          </p>
-          <p
-            className="font-['Playfair_Display',serif] font-normal text-[18px] leading-[0.95] tracking-[-1.08px] mt-[52px]"
-            style={{ color: "rgba(128,96,62,0.76)" }}
-            dir="auto"
-          >
-            Knowledge is better than wealth{" "}
-          </p>
-
-          {/* Shop now */}
-          <div className="flex justify-center mt-[44px]">
-            <button className="bg-[#885926] text-white font-['Playfair_Display',serif] font-normal text-[22px] leading-[0.95] tracking-[-1.32px] h-[39px] px-[61px] flex items-center">
-              Shop now
-            </button>
-          </div>
-
-          {/* Browse add-ons */}
-          <p
-            className="font-['Playfair_Display',serif] font-normal text-[#885926] text-[22px] leading-[0.95] tracking-[-1.32px] text-center mt-[57px]"
-          >
-            Browse add-ons
-          </p>
-        </div>
-
-        {/* ── FEATURES BAR ─────────────────────────────────────────── */}
-        <div
-          className="bg-white w-full flex items-center justify-around px-4"
-          style={{ height: 46, borderTop: "0.5px solid rgba(162,162,162,0.39)", borderBottom: "0.5px solid rgba(162,162,162,0.39)" }}
-        >
-          <div className="flex items-center gap-2">
-            <BookCheckIcon />
-            <p className="font-['Playfair_Display',serif] text-[#885926] text-[10px] leading-[0.95] tracking-[-0.6px] text-center whitespace-nowrap">
-              High quality prints
-            </p>
-          </div>
-          <div className="flex items-center gap-2">
-            <LocationPinIcon />
-            <p className="font-['Playfair_Display',serif] text-[#885926] text-[10px] leading-[0.95] tracking-[-0.6px] text-center whitespace-nowrap">
-              International shipping
-            </p>
-          </div>
-          <div className="flex items-center gap-2">
-            <BookOpenIcon />
-            <p className="font-['Playfair_Display',serif] text-[#885926] text-[10px] leading-[0.95] tracking-[-0.6px] text-center whitespace-nowrap">
-              affordable prices
-            </p>
-          </div>
-        </div>
-
-        {/* ── BROWN SECTION ────────────────────────────────────────── */}
-        <div className="bg-[#885926] w-full" style={{ paddingBottom: 40 }}>
-          {/* Category tabs */}
-          <div className="flex justify-around pt-8 px-4 mb-6">
-            {categories.map((cat, i) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(i)}
-                className="font-['Playfair_Display',serif] font-normal text-[18px] leading-[0.95] tracking-[-1.08px] whitespace-nowrap transition-opacity"
-                style={{ color: "#ffffff", opacity: activeCategory === i ? 1 : 0.7 }}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-
-          {/* Horizontal product cards scroll */}
-          <div className="flex gap-3 overflow-x-auto px-[26px] pb-2 mb-10 no-scrollbar">
-            {[...Array(5)].map((_, i) => (
-              <div key={i} className="bg-white h-[122px] w-[107px] shrink-0" />
-            ))}
-          </div>
-
-          {/* Our picks heading */}
-          <div className="px-4 mb-4">
-            {/* Arrow nav */}
-            <div className="flex justify-center gap-4 mb-3">
-              <button className="flex items-center justify-center">
-                <ChevronLeft size={10} className="text-[#FEF7FF]" />
-              </button>
-              <button className="flex items-center justify-center">
-                <ChevronRight size={10} className="text-[#FEF7FF]" />
-              </button>
-            </div>
-            <p className="font-['Playfair_Display',serif] font-normal text-white text-[20px] leading-[0.95] tracking-[-1.2px] text-center">
-              Our picks
-            </p>
-            <p className="font-['Playfair_Display',serif] font-normal text-[18px] leading-[0.95] tracking-[-1.08px] text-center mt-2 whitespace-nowrap"
-               style={{ color: "rgba(255,253,245,0.69)" }}>
-              Learn what we recommend for you
-            </p>
-          </div>
-
-          {/* 2-column product grid (3 rows = 6 cards) */}
-          <div className="grid grid-cols-2 gap-3 px-[19px]">
-            {[...Array(6)].map((_, i) => (
-              <div key={i} className="bg-white" style={{ height: 300 }} />
-            ))}
-          </div>
-
-          {/* See all button */}
-          <div className="flex justify-center mt-8">
-            <button
-              className="font-['Playfair_Display',serif] font-normal text-[#f3f3f3] text-[18px] leading-[0.95] tracking-[-1.08px] h-[28px] px-8 flex items-center"
-              style={{ border: "0.4px solid white" }}
-            >
-              See all
-            </button>
-          </div>
-        </div>
-
-        {/* ── ADDITIONAL ITEMS (cream section) ────────────────────── */}
-        <div className="bg-[#fffdf5] px-[19px] pt-8 pb-10">
-          <SectionHeader title="Additional Items" viewAll />
-          <p
-            className="font-['Playfair_Display',serif] font-normal text-[18px] leading-[0.95] tracking-[-1.08px] mb-4"
-            style={{ color: "rgba(128,96,62,0.76)" }}
-          >
-            Buy that which benefits you
-          </p>
-
-          {/* Horizontal product images */}
-          <div className="flex gap-3 overflow-x-auto pb-2 no-scrollbar" style={{ marginRight: -19, paddingRight: 19 }}>
-            {[...Array(3)].map((_, i) => (
-              <div key={i} className="bg-white shrink-0" style={{ height: 237, width: 150 }} />
-            ))}
-          </div>
-
-          {/* Divider */}
-          <div className="mt-10 mb-8" style={{ height: 0.4, background: "#885926" }} />
-
-          {/* Category filters */}
-          <div className="flex justify-center gap-6 mb-3">
-            {["Clothes", "Salafi pen"].map((c) => (
-              <span key={c} className="font-['Playfair_Display',serif] font-normal text-[#867461] text-[18px] leading-[0.95] tracking-[-1.08px]">
-                {c}
-              </span>
-            ))}
-          </div>
-          <div className="flex justify-center gap-5 mb-8">
-            {["Urdu", "English", "Arabic"].map((l) => (
-              <span key={l} className="font-['Playfair_Display',serif] font-normal text-[#867461] text-[18px] leading-[0.95] tracking-[-1.08px]">
-                {l}
-              </span>
-            ))}
-          </div>
-
-          {/* 2-column gray product grid (3 rows) */}
-          <div className="grid grid-cols-2 gap-3">
-            {[...Array(6)].map((_, i) => (
-              <div key={i} className="bg-[#f3f3f3]" style={{ height: 300 }} />
-            ))}
-          </div>
-
-          {/* Shop now */}
-          <div className="flex justify-center mt-10">
-            <button className="bg-[#885926] text-white font-['Playfair_Display',serif] font-normal text-[22px] leading-[0.95] tracking-[-1.32px] h-[39px] px-[61px] flex items-center">
-              Shop now
-            </button>
-          </div>
-        </div>
-
-        {/* ── MENU / FOOTER NAV ────────────────────────────────────── */}
-        <div className="bg-[#885926] w-full px-[19px] py-10">
-          <LogoMarkLarge light />
-          <div className="mt-8">
-            <p className="font-['Playfair_Display',serif] font-normal text-white text-[18px] leading-[0.95] tracking-[-1.08px] text-center mb-8">
-              Pages
-            </p>
-            {/* Placeholder nav links */}
-            <div className="space-y-4 mb-8 text-center">
-              {["Home", "Shop", "About", "Contact"].map((page) => (
-                <p
-                  key={page}
-                  className="font-['Playfair_Display',serif] font-normal text-[rgba(255,253,245,0.75)] text-[16px] leading-[0.95] tracking-[-0.96px]"
-                >
-                  {page}
-                </p>
-              ))}
-            </div>
-            <p className="font-['Playfair_Display',serif] font-normal text-white text-[18px] leading-[0.95] tracking-[-1.08px] text-center mb-6">
-              Help
-            </p>
-            <div className="space-y-4 text-center">
-              {["Shipping Info", "Returns", "FAQ", "WhatsApp Support"].map((h) => (
-                <p
-                  key={h}
-                  className="font-['Playfair_Display',serif] font-normal text-[rgba(255,253,245,0.75)] text-[16px] leading-[0.95] tracking-[-0.96px]"
-                >
-                  {h}
-                </p>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* ── DARK TEAL FOOTER ─────────────────────────────────────── */}
-        <div className="bg-[#0d282b] w-full px-[19px] pt-8 pb-12">
-          {/* Additional Items carousel */}
-          <SectionHeader title="Additional Items" viewAll light />
-
-          {/* Carousel with prev/next buttons */}
-          <div className="relative flex items-center gap-2 mb-10">
-            <button className="bg-white rounded-full shadow flex items-center justify-center shrink-0" style={{ width: 15, height: 15 }}>
-              <ChevronLeft size={8} className="text-[#1D1B20]" />
-            </button>
-            <div className="flex gap-3 overflow-x-auto no-scrollbar">
-              {[...Array(3)].map((_, i) => (
-                <div key={i} className="bg-[#f3f3f3] shrink-0" style={{ height: 201, width: 149 }} />
-              ))}
-            </div>
-            <button className="bg-white rounded-full shadow flex items-center justify-center shrink-0" style={{ width: 15, height: 15 }}>
-              <ChevronRight size={8} className="text-[#1D1B20]" />
-            </button>
-          </div>
-
-          {/* FAQ */}
-          <p className="font-['Playfair_Display',serif] font-normal text-[#dfaf23] text-[40px] leading-[0.95] tracking-[-2.4px] text-center mb-6">
-            FAQ
-          </p>
-
-          <div className="space-y-[2px] mx-[23px]">
-            {faqItems.map((q, i) => (
-              <FaqItem
-                key={i}
-                question={q}
-                open={openFaq === i}
-                onToggle={() => setOpenFaq(openFaq === i ? null : i)}
-              />
-            ))}
+        <div className="absolute bottom-1/2 left-[37.5%] right-[37.5%] top-[33.33%]">
+          <div className="absolute inset-[-12.5%_-8.33%_-2.14%_-8.33%]">
+            <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 7 4.58579">
+              <path d={svgPaths.pcc7f700} stroke="#885926" strokeLinecap="round" />
+            </svg>
           </div>
         </div>
       </div>
 
-      <style>{`
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-      `}</style>
+      {/* Location Icon */}
+      <div className="relative shrink-0 size-[24px]">
+        <div className="absolute inset-[64.58%_14.58%_10.42%_14.58%]">
+          <div className="absolute inset-[16.67%_-2.94%_-8.33%_-2.94%]">
+            <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 18 5.50007">
+              <path d={svgPaths.p6d489c0} stroke="#885926" strokeLinecap="round" />
+            </svg>
+          </div>
+        </div>
+        <div className="absolute inset-[10.42%_18.75%_18.75%_18.75%]">
+          <div className="absolute inset-[-2.94%_-3.33%_-2.28%_-3.33%]">
+            <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 16 17.8871">
+              <path d={svgPaths.p71209c0} stroke="#885926" />
+            </svg>
+          </div>
+        </div>
+        <div className="absolute bottom-[41.67%] left-[33.33%] right-[33.33%] top-1/4">
+          <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 8 8">
+            <circle cx="4" cy="4" r="3.5" stroke="#885926" />
+          </svg>
+        </div>
+      </div>
+
+      {/* Book Open Icon */}
+      <div className="relative shrink-0 size-[24px]">
+        {/* centre spine */}
+        <div className="absolute bottom-[22.92%] left-1/2 right-1/2 top-[27.08%]">
+          <div className="absolute inset-[-4.17%_-0.5px]">
+            <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 1 13">
+              <path d="M0.5 0.5V12.5" stroke="#885926" strokeLinecap="round" />
+            </svg>
+          </div>
+        </div>
+        {/* left spine */}
+        <div className="absolute inset-[27.08%_14.58%_22.92%_85.42%]">
+          <div className="absolute inset-[-4.17%_-0.5px]">
+            <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 1 13">
+              <path d="M0.5 0.5V12.5" stroke="#885926" strokeLinecap="round" />
+            </svg>
+          </div>
+        </div>
+        {/* right spine */}
+        <div className="absolute inset-[27.08%_85.42%_22.92%_14.58%]">
+          <div className="absolute inset-[-4.17%_-0.5px]">
+            <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 1 13">
+              <path d="M0.5 0.5V12.5" stroke="#885926" strokeLinecap="round" />
+            </svg>
+          </div>
+        </div>
+        {/* bottom right page edge */}
+        <div className="absolute bottom-[22.92%] left-1/2 right-[14.58%] top-[68.75%]">
+          <div className="absolute inset-[-25%_-5.88%_-25.01%_-5.88%]">
+            <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 9.50023 3.00012">
+              <path d={svgPaths.p2d8c5300} stroke="#885926" strokeLinecap="round" />
+            </svg>
+          </div>
+        </div>
+        {/* bottom left page edge (mirrored) */}
+        <div className="absolute bottom-[22.92%] flex items-center justify-center left-[14.58%] right-1/2 top-[68.75%]" style={{ containerType: "size" }}>
+          <div className="-scale-x-100 flex-none h-[100cqh] w-[100cqw]">
+            <div className="relative size-full">
+              <div className="absolute inset-[-25%_-5.88%_-25.01%_-5.88%]">
+                <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 9.50023 3.00012">
+                  <path d={svgPaths.p2d8c5300} stroke="#885926" strokeLinecap="round" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* top right page edge */}
+        <div className="absolute bottom-[72.92%] left-1/2 right-[14.58%] top-[18.75%]">
+          <div className="absolute inset-[-25%_-5.88%_-25.01%_-5.88%]">
+            <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 9.50023 3.00012">
+              <path d={svgPaths.p2d8c5300} stroke="#885926" strokeLinecap="round" />
+            </svg>
+          </div>
+        </div>
+        {/* top left page edge (mirrored) */}
+        <div className="absolute bottom-[72.92%] flex items-center justify-center left-[14.58%] right-1/2 top-[18.75%]" style={{ containerType: "size" }}>
+          <div className="-scale-x-100 flex-none h-[100cqh] w-[100cqw]">
+            <div className="relative size-full">
+              <div className="absolute inset-[-25%_-5.88%_-25.01%_-5.88%]">
+                <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 9.50023 3.00012">
+                  <path d={svgPaths.p2d8c5300} stroke="#885926" strokeLinecap="round" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ShopNowContainer() {
+  return (
+    <div className="absolute bg-[#885926] h-[39px] left-[93px] top-[351px] w-[209px]">
+      <p className="[word-break:break-word] absolute font-['Playfair_Display',serif] font-normal leading-[0.95] left-[61px] text-[22px] text-white top-[6px] tracking-[-1.32px] whitespace-nowrap">
+        Shop now
+      </p>
+    </div>
+  );
+}
+
+function LanguageContainer() {
+  return (
+    <div className="[word-break:break-word] absolute content-stretch flex font-['Playfair_Display',serif] font-normal gap-[18px] items-center leading-[0.95] left-[109px] text-[#867461] text-[18px] text-center top-[2684px] tracking-[-1.08px] whitespace-nowrap">
+      <p className="relative shrink-0">Urdu</p>
+      <p className="relative shrink-0">English</p>
+      <p className="relative shrink-0">Arabic</p>
+    </div>
+  );
+}
+
+function CategoryContainer() {
+  return (
+    <div className="[word-break:break-word] absolute content-stretch flex font-['Playfair_Display',serif] font-normal gap-[16px] items-center leading-[0.95] left-[126px] text-[#867461] text-[18px] text-center top-[2655px] tracking-[-1.08px] whitespace-nowrap">
+      <p className="relative shrink-0">Clothes</p>
+      <p className="relative shrink-0">Salafi pen</p>
+    </div>
+  );
+}
+
+function ShopNowContainer1() {
+  return (
+    <div className="absolute bg-[#885926] h-[39px] left-[92px] top-[3931px] w-[209px]">
+      <p className="[word-break:break-word] absolute font-['Playfair_Display',serif] font-normal leading-[0.95] left-[61px] text-[22px] text-white top-[6px] tracking-[-1.32px] whitespace-nowrap">
+        Shop now
+      </p>
+    </div>
+  );
+}
+
+function CurrencyAmount() {
+  return (
+    <div className="[word-break:break-word] h-[20px] leading-[1.684] relative shrink-0 text-white w-[34px]">
+      <p className="absolute font-['Playfair',serif] font-normal left-0 text-[12px] top-0 whitespace-nowrap">
+        INR
+      </p>
+      <p className="absolute font-['Philosopher',serif] h-[20px] left-[25px] text-[10px] top-[2px] w-[7px]">
+        ₹
+      </p>
+    </div>
+  );
+}
+
+function CurrencyInfo() {
+  return (
+    <div className="absolute content-stretch flex gap-[3px] items-center left-[322px] top-[42px]">
+      <div className="flex h-[14px] items-center justify-center relative shrink-0 w-[11px]">
+        <div className="-rotate-90 flex-none">
+          <div className="h-[11px] overflow-clip relative w-[14px]">
+            <div className="absolute inset-[29.17%_41.67%_29.17%_37.5%]">
+              <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 2.91667 4.58333">
+                <path d={svgPaths.p15944280} fill="white" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <CurrencyAmount />
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// Main iPhone frame – absolute layout matching Figma exactly
+// ─────────────────────────────────────────────────────────────
+
+function IPhone() {
+  return (
+    <div className="bg-[#fffdf5] relative" style={{ width: 393, height: 5247 }}>
+      {/* ── Background colour blocks ── */}
+      <div className="absolute bg-[#fffdf5] h-[1449px] left-0 top-[2615px] w-[393px]" />
+      <div className="absolute bg-[#885926] h-[1571px] left-0 top-[588px] w-[393px]">
+        <div aria-hidden className="absolute border-[#a2a2a2] border-[0.5px] border-solid inset-[-0.5px] pointer-events-none" />
+      </div>
+      <div className="absolute bg-[#0d282b] h-[797px] left-0 top-[4450px] w-[393px]" />
+      <div className="absolute bg-[#885926] h-[408px] left-0 top-[4042px] w-[393px]" />
+
+      {/* ── Notification bar ── */}
+      <div className="absolute bg-[#885926] h-[40px] left-0 top-[32px] w-[393px]" />
+      <p className="[word-break:break-word] absolute font-['Playfair_Display',serif] font-normal h-[11px] leading-[0.95] left-[96px] text-[12px] text-white top-[46px] tracking-[-0.72px] w-[201px]" dir="auto">
+        International order fees added on whatspp
+      </p>
+      <CurrencyInfo />
+
+      {/* ── Header ── */}
+      <HeaderContainer />
+
+      {/* ── Logo (header) ── */}
+      <div className="absolute h-[45px] left-[151px] top-[75px] w-[92px]">
+        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgLogo} />
+      </div>
+
+      {/* ── Hero text ── */}
+      <p className="[word-break:break-word] absolute font-['Playfair_Display',serif] font-normal h-[38px] leading-[0.95] left-[93px] text-[#885926] text-[40px] top-[208px] tracking-[-2.4px] w-[210px]">
+        Finally afford
+      </p>
+      <p className="-translate-x-1/2 [word-break:break-word] absolute font-['Playfair_Display',serif] font-normal italic leading-[0.95] left-[197px] text-[#885926] text-[42px] text-center top-[245px] tracking-[-2.52px] whitespace-nowrap">
+        Beneficial knowledge
+      </p>
+      <p className="[word-break:break-word] absolute font-['Playfair_Display',serif] font-normal h-[17px] leading-[0.95] left-[80px] text-[18px] text-[rgba(128,96,62,0.76)] top-[307px] tracking-[-1.08px] w-[229px]" dir="auto">
+        {`Knowledge is better than wealth `}
+      </p>
+      <ShopNowContainer />
+      <p className="[word-break:break-word] absolute font-['Playfair_Display',serif] font-normal leading-[0.95] left-[125px] text-[#885926] text-[22px] top-[408px] tracking-[-1.32px] whitespace-nowrap">
+        Browse add-ons
+      </p>
+
+      {/* ── Features bar ── */}
+      <div className="absolute bg-white h-[46px] left-px top-[542px] w-[393px]">
+        <div aria-hidden className="absolute border-[0.5px] border-[rgba(162,162,162,0.39)] border-solid inset-[-0.25px] pointer-events-none" />
+      </div>
+      <IconContainer />
+      <p className="-translate-x-1/2 [word-break:break-word] absolute font-['Playfair_Display',serif] font-normal leading-[0.95] left-[82px] text-[#885926] text-[10px] text-center top-[570px] tracking-[-0.6px] whitespace-nowrap">
+        High quality prints
+      </p>
+      <p className="-translate-x-1/2 [word-break:break-word] absolute font-['Playfair_Display',serif] font-normal leading-[0.95] left-[200px] text-[#885926] text-[10px] text-center top-[570px] tracking-[-0.6px] whitespace-nowrap">
+        International shipping
+      </p>
+      <p className="-translate-x-1/2 [word-break:break-word] absolute font-['Playfair_Display',serif] font-normal leading-[0.95] left-[314.5px] text-[#885926] text-[10px] text-center top-[570px] tracking-[-0.6px] whitespace-nowrap">
+        affordable prices
+      </p>
+
+      {/* ── Brown section – category tabs ── */}
+      <p className="[word-break:break-word] absolute font-['Playfair_Display',serif] font-normal leading-[0.95] left-[48px] text-[18px] text-white top-[649px] tracking-[-1.08px] whitespace-nowrap">
+        Aqeedah
+      </p>
+      <p className="[word-break:break-word] absolute font-['Playfair_Display',serif] font-normal leading-[0.95] left-[171px] text-[18px] text-white top-[649px] tracking-[-1.08px] whitespace-nowrap">
+        Hadith
+      </p>
+      <p className="[word-break:break-word] absolute font-['Playfair_Display',serif] font-normal leading-[0.95] left-[295px] text-[18px] text-white top-[649px] tracking-[-1.08px] whitespace-nowrap">
+        Fiqh
+      </p>
+
+      {/* ── Category product cards (horizontal) ── */}
+      <div className="absolute bg-white h-[122px] left-[26px] top-[676px] w-[107px]" />
+      <div className="absolute bg-white h-[122px] left-[142px] top-[676px] w-[107px]" />
+      <div className="absolute bg-white h-[122px] left-[258px] top-[676px] w-[107px]" />
+      <div className="absolute bg-white h-[122px] left-[374px] top-[676px] w-[107px]" />
+
+      {/* ── Our picks nav arrows ── */}
+      <div className="absolute left-[202px] overflow-clip size-[10px] top-[827px]">
+        <div className="absolute inset-[16.67%]">
+          <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 6.66667 6.66667">
+            <path d={svgPaths.pe751d80} fill="#FEF7FF" />
+          </svg>
+        </div>
+      </div>
+      <div className="absolute flex items-center justify-center left-[182px] size-[10px] top-[827px]">
+        <div className="-scale-y-100 flex-none rotate-180">
+          <div className="overflow-clip relative size-[10px]">
+            <div className="absolute inset-[16.67%]">
+              <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 6.66667 6.66667">
+                <path d={svgPaths.pe751d80} fill="#FEF7FF" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Our picks heading ── */}
+      <p className="[word-break:break-word] absolute font-['Playfair_Display',serif] font-normal h-[19px] leading-[0.95] left-[158px] text-[20px] text-white top-[881px] tracking-[-1.2px] w-[78px]">
+        Our picks
+      </p>
+      <p className="-translate-x-1/2 [word-break:break-word] absolute font-['Playfair_Display',serif] font-normal leading-[0.95] left-[197px] text-[18px] text-[rgba(255,253,245,0.69)] text-center top-[903px] tracking-[-1.08px] whitespace-nowrap">
+        Learn what we recommend for you
+      </p>
+
+      {/* ── Our picks – 2×3 white product cards ── */}
+      <div className="absolute bg-white h-[300px] left-[19px] top-[938px] w-[174px]" />
+      <div className="absolute bg-white h-[300px] left-[200px] top-[938px] w-[174px]" />
+      <div className="absolute bg-white h-[300px] left-[19px] top-[1343px] w-[174px]" />
+      <div className="absolute bg-white h-[300px] left-[200px] top-[1343px] w-[174px]" />
+      <div className="absolute bg-white h-[300px] left-[19px] top-[1748px] w-[174px]" />
+      <div className="absolute bg-white h-[300px] left-[200px] top-[1748px] w-[174px]" />
+
+      {/* ── See all button ── */}
+      <div className="absolute bg-[rgba(0,0,0,0)] border-[0.4px] border-solid border-white h-[28px] left-[143px] top-[2088px] w-[107px]" />
+      <p className="[word-break:break-word] absolute font-['Playfair_Display',serif] font-normal leading-[0.95] left-[176px] text-[#f3f3f3] text-[18px] top-[2093px] tracking-[-1.08px] whitespace-nowrap">
+        See all
+      </p>
+
+      {/* ── Additional Items (cream section) ── */}
+      <p className="[word-break:break-word] absolute font-['Playfair_Display',serif] font-normal leading-[0.95] left-[19px] text-[25px] text-black top-[2223px] tracking-[-1.5px] whitespace-nowrap">
+        Additional Items
+      </p>
+      <p className="-translate-x-1/2 [word-break:break-word] absolute font-['Playfair_Display',serif] font-normal leading-[0.95] left-[116.5px] text-[#867461] text-[18px] text-center top-[2253px] tracking-[-1.08px] whitespace-nowrap">
+        Buy that which benefits you
+      </p>
+      <p className="[word-break:break-word] absolute font-['Playfair_Display',serif] font-normal leading-[1.53] left-[339px] text-[10px] text-black top-[2257px] tracking-[-0.3px] whitespace-nowrap">
+        View all
+      </p>
+
+      {/* ── Additional Items product images ── */}
+      <div className="absolute bg-white h-[237px] left-[19px] top-[2288px] w-[150px]" />
+      <div className="absolute bg-white h-[237px] left-[179px] top-[2288px] w-[150px]" />
+      <div className="absolute bg-white h-[237px] left-[339px] top-[2288px] w-[150px]" />
+
+      {/* ── Divider line ── */}
+      <div className="absolute h-0 left-[30px] top-[2723px] w-[334px]">
+        <div className="absolute inset-[-0.4px_0_0_0]">
+          <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 334 0.4">
+            <line stroke="#885926" strokeWidth="0.4" x2="334" y1="0.2" y2="0.2" />
+          </svg>
+        </div>
+      </div>
+
+      {/* ── Category / Language filters ── */}
+      <CategoryContainer />
+      <LanguageContainer />
+
+      {/* ── Gray product cards grid ── */}
+      <div className="absolute bg-[#f3f3f3] h-[300px] left-[19px] top-[2767px] w-[174px]" />
+      <div className="absolute bg-[#f3f3f3] h-[300px] left-[200px] top-[2767px] w-[174px]" />
+      <div className="absolute bg-[#f3f3f3] h-[300px] left-[19px] top-[3155px] w-[174px]" />
+      <div className="absolute bg-[#f3f3f3] h-[300px] left-[200px] top-[3155px] w-[174px]" />
+      <div className="absolute bg-[#f3f3f3] h-[300px] left-[19px] top-[3543px] w-[174px]" />
+      <div className="absolute bg-[#f3f3f3] h-[300px] left-[200px] top-[3543px] w-[174px]" />
+
+      {/* ── Shop now (second) ── */}
+      <ShopNowContainer1 />
+
+      {/* ── Menu section ── */}
+      <div className="absolute h-[66px] left-[19px] top-[4090px] w-[135px]">
+        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgLogo1} />
+      </div>
+      <p className="-translate-x-1/2 [word-break:break-word] absolute font-['Playfair_Display',serif] font-normal leading-[0.95] left-[221px] text-[18px] text-center text-white top-[4090px] tracking-[-1.08px] whitespace-nowrap">
+        Pages
+      </p>
+      <p className="-translate-x-1/2 [word-break:break-word] absolute font-['Playfair_Display',serif] font-normal leading-[0.95] left-[217.5px] text-[18px] text-center text-white top-[4270px] tracking-[-1.08px] whitespace-nowrap">
+        Help
+      </p>
+
+      {/* ── Footer – Additional Items carousel ── */}
+      <p className="[word-break:break-word] absolute font-['Playfair_Display',serif] font-normal leading-[0.95] left-[115px] text-[25px] text-white top-[4482px] tracking-[-1.5px] whitespace-nowrap">
+        Additional Items
+      </p>
+      <p className="[word-break:break-word] absolute font-['Playfair_Display',serif] font-normal leading-[1.53] left-[348px] text-[10px] text-white top-[4506px] tracking-[-0.3px] whitespace-nowrap">
+        View all
+      </p>
+
+      {/* Carousel prev button */}
+      <div className="absolute flex items-center justify-center left-[12px] size-[15px] top-[4608px]">
+        <div className="flex-none rotate-180">
+          <NextButtonRight />
+        </div>
+      </div>
+      <div className="absolute flex items-center justify-center left-[15px] size-[10px] top-[4611px]">
+        <div className="-scale-y-100 flex-none rotate-180">
+          <div className="overflow-clip relative size-[10px]">
+            <div className="absolute inset-[16.67%]">
+              <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 6.66667 6.66667">
+                <path d={svgPaths.pe751d80} fill="#1D1B20" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Carousel next button */}
+      <div className="absolute flex items-center justify-center left-[366px] size-[15px] top-[4608px]">
+        <div className="-scale-y-100 flex-none">
+          <NextButtonRight />
+        </div>
+      </div>
+      <div className="absolute left-[369px] overflow-clip size-[10px] top-[4611px]">
+        <div className="absolute inset-[16.67%]">
+          <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 6.66667 6.66667">
+            <path d={svgPaths.pe751d80} fill="#1D1B20" />
+          </svg>
+        </div>
+      </div>
+
+      {/* Carousel product images */}
+      <div className="absolute bg-[#f3f3f3] h-[201px] left-[-42px] top-[4528px] w-[149px]" />
+      <div className="absolute bg-[#f3f3f3] h-[201px] left-[122px] top-[4528px] w-[149px]" />
+      <div className="absolute bg-[#f3f3f3] h-[201px] left-[286px] top-[4528px] w-[149px]" />
+
+      {/* ── FAQ ── */}
+      <p className="[word-break:break-word] absolute font-['Playfair_Display',serif] font-normal leading-[0.95] left-[161px] text-[#dfaf23] text-[40px] top-[4913px] tracking-[-2.4px] whitespace-nowrap">
+        FAQ
+      </p>
+
+      {/* FAQ rows */}
+      {([4989, 5035, 5081, 5127, 5173] as const).map((top, i) => (
+        <div key={i}>
+          <div className="absolute bg-[#f3f3f3] h-[41px] left-[42px] w-[309px]" style={{ top }} />
+          <p
+            className="[word-break:break-word] absolute font-['Playfair_Display',serif] font-normal h-[19px] leading-[0.95] left-[56px] text-[20px] text-black tracking-[-1.2px] w-[207px]"
+            style={{ top: top + 11 }}
+          >
+            How does checkout work?
+          </p>
+          {/* Dropdown chevron */}
+          <div className="absolute flex items-center justify-center left-[330px] size-[15px]" style={{ top: top + 13 }}>
+            <div className="flex-none rotate-180">
+              <div className="overflow-clip relative size-[15px]">
+                <div className="absolute inset-[37.5%_29.17%_41.67%_29.17%]">
+                  <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 6.25 3.125">
+                    <path d={svgPaths.p243c3400} fill="#1D1B20" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// App shell – centres the 393 px phone on any screen
+// ─────────────────────────────────────────────────────────────
+
+export default function App() {
+  return (
+    <div
+      style={{
+        minHeight: "100vh",
+        background: "#d6d0c8",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "flex-start",
+      }}
+    >
+      <IPhone />
     </div>
   );
 }
