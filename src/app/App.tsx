@@ -2,106 +2,160 @@ import { useState } from "react";
 import imgLogo from "../imports/IPhone16114-1/1f078f66de22c88e6a47117f073725c1cd3c2f37.png";
 import imgLogo1 from "../imports/IPhone16114-1/ccf3dd809cdd1e0e30aa10dec48a2c7fd354e933.png";
 
-function MenuIcon() {
+// ── Exact SVG icons from Figma ────────────────────────────────
+
+// Hamburger – viewBox 0 0 67 53, paths occupy [26.5,20.5]–[42.5,32.5]
+function HamburgerIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-      <path d="M2 5h16M2 10h16M2 15h16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    <svg width="17" height="12" viewBox="0 0 17 12" fill="none">
+      <path d="M0 0H16V1.33333H0V0ZM0 5.33333H16V6.66667H0V5.33333ZM0 10.6667H16V12H0V10.6667Z" fill="#111111" />
     </svg>
   );
 }
 
+// Search – viewBox subset of header SVG
 function SearchIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-      <circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" strokeWidth="1.5" />
-      <path d="M14 14l3.5 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+      <circle cx="4.667" cy="4.667" r="4.167" stroke="#111111" strokeWidth="0.933" />
+      <path d="M8 8l2.5 2.5" stroke="#111111" strokeWidth="0.933" strokeLinecap="round" />
     </svg>
   );
 }
 
+// Cart – from Figma path (centered around 357,20.5–32.5 → normalised)
 function CartIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-      <path d="M3 3h2l2.5 9h8l2-6H6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      <circle cx="9" cy="16" r="1" fill="currentColor" />
-      <circle cx="15" cy="16" r="1" fill="currentColor" />
+    <svg width="11" height="12" viewBox="0 0 11 12" fill="none">
+      <path d="M5.5 0C4.135 0 3.014 1.0403 3.014 2.3077V2.7692H0.559L0.528 3.2022L0.031 11.5098L0 12H11L10.969 11.5094L10.472 3.2017L10.441 2.7692H7.986V2.3077C7.986 1.0403 6.865 0 5.5 0ZM5.5 0.9231C5.896 0.9231 6.275 1.069 6.555 1.3286C6.835 1.5883 6.992 1.9405 6.992 2.3077V2.7692H4.009V2.3077C4.009 1.9405 4.166 1.5883 4.446 1.3286C4.725 1.069 5.105 0.9231 5.5 0.9231ZM1.492 3.6923H3.014V5.0769H4.009V3.6923H6.992V5.0769H7.986V3.6923H9.509L9.944 11.0769H1.057L1.492 3.6923Z" fill="#111111" />
     </svg>
   );
 }
 
-function UserIcon() {
+// Person – from Figma path (centred around 334,20.5–32.5 → normalised)
+function PersonIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-      <circle cx="10" cy="7" r="3.5" stroke="currentColor" strokeWidth="1.5" />
-      <path d="M3 18c0-3.314 3.134-6 7-6s7 2.686 7 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    <svg width="11" height="12" viewBox="0 0 11 12" fill="none">
+      <path d="M5.5 0C7.62 0 9.35 1.7155 9.35 3.8182C9.35 5.1327 8.674 6.3 7.648 6.9889C9.61 7.8235 11 9.7544 11 12H9.9C9.9 9.5836 7.936 7.6364 5.5 7.6364C3.063 7.6364 1.1 9.5836 1.1 12H0C0 9.7544 1.39 7.824 3.352 6.9884C2.828 6.6381 2.4 6.1659 2.103 5.6133C1.806 5.0606 1.651 4.4443 1.65 3.8182C1.65 1.7155 3.38 0 5.5 0ZM5.5 1.0909C3.975 1.0909 2.75 2.3056 2.75 3.8182C2.75 5.3307 3.975 6.5455 5.5 6.5455C7.025 6.5455 8.25 5.3307 8.25 3.8182C8.25 2.3056 7.025 1.0909 5.5 1.0909Z" fill="#111111" />
     </svg>
   );
 }
 
-function ChevronIcon({ open }: { open: boolean }) {
+// Chevron/dropdown arrow – from p243c3400: "M0 3.125L3.125 0L6.25 3.125H0Z"
+function DropdownArrow({ open = false, color = "#1D1B20" }: { open?: boolean; color?: string }) {
   return (
     <svg
-      width="14" height="14" viewBox="0 0 14 14" fill="none"
-      style={{ transition: "transform 0.2s", transform: open ? "rotate(180deg)" : "rotate(0deg)" }}
+      width="10" height="6" viewBox="0 0 10 5" fill="none"
+      style={{ transition: "transform 0.2s", transform: open ? "rotate(180deg)" : "none", display: "block" }}
     >
-      <path d="M2 4l5 5 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M0 0L5 5L10 0H0Z" fill={color} />
     </svg>
   );
 }
+
+// Forward arrow – pe751d80 normalised
+function ForwardArrow({ color = "#FEF7FF" }: { color?: string }) {
+  return (
+    <svg width="10" height="10" viewBox="0 0 6.667 6.667" fill="none">
+      <path d="M5.073 3.75H0V2.917H5.073L2.74 0.583L3.333 0L6.667 3.333L3.333 6.667L2.74 6.083L5.073 3.75Z" fill={color} />
+    </svg>
+  );
+}
+
+// Book-check icon (features bar) – p2a2acd80 + pcc7f700
+function BookCheckIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M16.5 9.5V14.5C16.5 16.386 16.5 17.328 15.914 17.914C15.328 18.5 14.386 18.5 12.5 18.5H3C1.619 18.5 0.5 17.381 0.5 16M16.5 9.5V4.5C16.5 2.614 16.5 1.672 15.914 1.086C15.328 0.5 14.386 0.5 12.5 0.5H4.5C2.614 0.5 1.672 0.5 1.086 1.086C0.5 1.672 0.5 2.614 0.5 4.5V16M16.5 9.5C16.5 11.386 16.5 12.328 15.914 12.914C15.328 13.5 14.386 13.5 12.5 13.5H3C1.619 13.5 0.5 14.619 0.5 16" stroke="#885926" strokeWidth="1" />
+      <path d="M4 10.5L5.293 11.793C5.683 12.183 6.317 12.183 6.707 11.793L10 8.5" stroke="#885926" strokeWidth="1" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+// Location icon (features bar)
+function LocationIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M19.5 10C19.5 16.018 13.012 19.403 11.425 20.276C11.157 20.424 10.843 20.424 10.575 20.276C8.988 19.403 2.5 16.018 2.5 10C2.5 5.5 6.634 2.5 11 2.5C15 2.5 19.5 5.5 19.5 10Z" stroke="#885926" strokeWidth="1" />
+      <circle cx="11" cy="10" r="3.5" stroke="#885926" strokeWidth="1" />
+      <path d="M2.636 17.5C5.15 18.962 8.032 19.5 11 19.5" stroke="#885926" strokeWidth="1" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+// Book-open icon (features bar)
+function BookOpenIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M12 3.5V20.5" stroke="#885926" strokeWidth="1" strokeLinecap="round" />
+      <path d="M3.5 3.5V20.5" stroke="#885926" strokeWidth="1" strokeLinecap="round" />
+      <path d="M20.5 3.5V20.5" stroke="#885926" strokeWidth="1" strokeLinecap="round" />
+      <path d="M12 4.5C12 4.5 11 2.5 7.5 2.5C4 2.5 3.5 4.5 3.5 4.5" stroke="#885926" strokeWidth="1" strokeLinecap="round" />
+      <path d="M12 4.5C12 4.5 13 2.5 16.5 2.5C20 2.5 20.5 4.5 20.5 4.5" stroke="#885926" strokeWidth="1" strokeLinecap="round" />
+      <path d="M12 19.5C12 19.5 11 21.5 7.5 21.5C4 21.5 3.5 19.5 3.5 19.5" stroke="#885926" strokeWidth="1" strokeLinecap="round" />
+      <path d="M12 19.5C12 19.5 13 21.5 16.5 21.5C20 21.5 20.5 19.5 20.5 19.5" stroke="#885926" strokeWidth="1" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+// ── Header ───────────────────────────────────────────────────
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   return (
-    <header style={{ position: "sticky", top: 0, zIndex: 50, backgroundColor: "rgba(255,255,255,0.95)", backdropFilter: "blur(8px)", borderBottom: "1px solid rgba(162,162,162,0.3)" }}>
-      <div style={{ backgroundColor: "#885926", color: "white", fontSize: 11, textAlign: "center", padding: "6px 16px", letterSpacing: "-0.3px" }}>
-        International order fees added on WhatsApp &nbsp;|&nbsp; INR ₹
+    <header style={{ position: "sticky", top: 0, zIndex: 50, backgroundColor: "rgba(255,253,245,0.97)", backdropFilter: "blur(4px)" }}>
+      {/* Notification bar */}
+      <div style={{ backgroundColor: "#885926", color: "white", fontFamily: "'Playfair Display', serif", fontSize: 12, textAlign: "center", padding: "5px 16px", letterSpacing: "-0.72px" }}>
+        International order fees added on whatspp &nbsp;|&nbsp; <span style={{ fontFamily: "'Playfair', serif" }}>INR</span> ₹
       </div>
-      <div style={{ position: "relative", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 16px", height: 56, maxWidth: 640, margin: "0 auto" }}>
-        <button onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu" style={{ color: "#111", background: "none", border: "none", cursor: "pointer", padding: 4, display: "flex" }}>
-          <MenuIcon />
+      {/* Nav bar */}
+      <div style={{ backgroundColor: "rgba(255,253,245,0.8)", borderBottom: "0.5px solid #A2A2A2", position: "relative", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 14px", height: 57 }}>
+        <button onClick={() => setMenuOpen(!menuOpen)} style={{ background: "none", border: "none", cursor: "pointer", padding: 4, display: "flex", alignItems: "center" }}>
+          <HamburgerIcon />
         </button>
-        <div style={{ position: "absolute", left: "50%", transform: "translateX(-50%)", height: 36 }}>
+        <div style={{ position: "absolute", left: "50%", transform: "translateX(-50%)", height: 45 }}>
           <img src={imgLogo} alt="Logo" style={{ height: "100%", width: "auto", objectFit: "contain" }} />
         </div>
-        <div style={{ display: "flex", alignItems: "center", gap: 12, color: "#111" }}>
-          <button aria-label="Search" style={{ background: "none", border: "none", cursor: "pointer", color: "inherit", display: "flex" }}><SearchIcon /></button>
-          <button aria-label="Cart" style={{ background: "none", border: "none", cursor: "pointer", color: "inherit", display: "flex" }}><CartIcon /></button>
-          <button aria-label="Account" style={{ background: "none", border: "none", cursor: "pointer", color: "inherit", display: "flex" }}><UserIcon /></button>
+        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+          <button style={{ background: "none", border: "none", cursor: "pointer", display: "flex", padding: 2 }}><SearchIcon /></button>
+          <button style={{ background: "none", border: "none", cursor: "pointer", display: "flex", padding: 2 }}><CartIcon /></button>
+          <button style={{ background: "none", border: "none", cursor: "pointer", display: "flex", padding: 2 }}><PersonIcon /></button>
         </div>
       </div>
       {menuOpen && (
-        <nav style={{ position: "absolute", left: 0, right: 0, backgroundColor: "white", borderBottom: "1px solid #eee", boxShadow: "0 4px 12px rgba(0,0,0,0.08)", zIndex: 40 }}>
-          <div style={{ maxWidth: 640, margin: "0 auto", padding: "8px 16px 16px" }}>
-            {["Home", "Shop", "Aqeedah", "Hadith", "Fiqh", "Additional Items", "Help"].map((item) => (
-              <a key={item} href="#" onClick={() => setMenuOpen(false)}
-                style={{ display: "block", padding: "10px 0", borderBottom: "1px solid #f3f3f3", fontFamily: "'Playfair Display', serif", fontSize: 16, color: "#111", textDecoration: "none" }}>
-                {item}
-              </a>
-            ))}
-          </div>
+        <nav style={{ position: "absolute", left: 0, right: 0, backgroundColor: "#fffdf5", borderBottom: "0.5px solid #A2A2A2", zIndex: 40, boxShadow: "0 4px 12px rgba(0,0,0,0.08)" }}>
+          {["Home", "Shop", "Aqeedah", "Hadith", "Fiqh", "Additional Items", "Help"].map((item) => (
+            <a key={item} href="#" onClick={() => setMenuOpen(false)}
+              style={{ display: "block", padding: "11px 16px", borderBottom: "0.5px solid rgba(162,162,162,0.3)", fontFamily: "'Playfair Display', serif", fontSize: 18, color: "#111", textDecoration: "none", letterSpacing: "-1.08px" }}>
+              {item}
+            </a>
+          ))}
         </nav>
       )}
     </header>
   );
 }
 
+// ── Hero ─────────────────────────────────────────────────────
+
 function Hero() {
   return (
-    <section style={{ backgroundColor: "#fffdf5", padding: "48px 24px 40px", textAlign: "center", maxWidth: 640, margin: "0 auto" }}>
-      <p style={{ fontFamily: "'Playfair Display', serif", color: "rgba(128,96,62,0.76)", fontSize: 16, marginBottom: 8, letterSpacing: "-0.5px" }}>
-        Knowledge is better than wealth
-      </p>
-      <h1 style={{ fontFamily: "'Playfair Display', serif", color: "#885926", fontSize: "clamp(36px, 10vw, 52px)", fontWeight: 400, lineHeight: 1.05, letterSpacing: "-2px", margin: "0 0 4px" }}>
+    <section style={{ backgroundColor: "#fffdf5", paddingTop: 40, paddingBottom: 0, textAlign: "center" }}>
+      <h1 style={{ fontFamily: "'Playfair Display', serif", color: "#885926", fontSize: 40, fontWeight: 400, lineHeight: 0.95, letterSpacing: "-2.4px", margin: "0 auto 4px", maxWidth: 210 }}>
         Finally afford
       </h1>
-      <h2 style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", color: "#885926", fontSize: "clamp(28px, 8vw, 44px)", fontWeight: 400, lineHeight: 1.1, letterSpacing: "-1.5px", margin: "0 0 32px" }}>
+      <h2 style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", color: "#885926", fontSize: 42, fontWeight: 400, lineHeight: 0.95, letterSpacing: "-2.52px", margin: "0 0 20px", whiteSpace: "nowrap" }}>
         Beneficial knowledge
       </h2>
-      <div style={{ display: "flex", flexDirection: "column", gap: 12, alignItems: "center" }}>
-        <button style={{ backgroundColor: "#885926", color: "white", fontFamily: "'Playfair Display', serif", fontSize: 18, padding: "10px 40px", border: "none", cursor: "pointer", width: "100%", maxWidth: 280 }}>
+      <p style={{ fontFamily: "'Playfair Display', serif", color: "rgba(128,96,62,0.76)", fontSize: 18, lineHeight: 0.95, letterSpacing: "-1.08px", margin: "0 auto 20px", maxWidth: 229 }}>
+        Knowledge is better than wealth
+      </p>
+      {/* Shop now button */}
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}>
+        <button style={{ backgroundColor: "#885926", color: "white", fontFamily: "'Playfair Display', serif", fontSize: 22, fontWeight: 400, lineHeight: 0.95, letterSpacing: "-1.32px", padding: "9px 0", border: "none", cursor: "pointer", width: 209, display: "block" }}>
           Shop now
         </button>
-        <button style={{ backgroundColor: "transparent", color: "#885926", fontFamily: "'Playfair Display', serif", fontSize: 18, padding: "10px 40px", border: "1px solid #885926", cursor: "pointer", width: "100%", maxWidth: 280 }}>
+        <button style={{ backgroundColor: "transparent", color: "#885926", fontFamily: "'Playfair Display', serif", fontSize: 22, fontWeight: 400, lineHeight: 0.95, letterSpacing: "-1.32px", padding: "6px 0", border: "none", cursor: "pointer" }}>
           Browse add-ons
         </button>
       </div>
@@ -109,65 +163,88 @@ function Hero() {
   );
 }
 
+// ── Features Bar ──────────────────────────────────────────────
+
 function FeaturesBar() {
-  const features = [
-    { icon: "📖", label: "High quality prints" },
-    { icon: "🌍", label: "International shipping" },
-    { icon: "💰", label: "Affordable prices" },
-  ];
   return (
-    <div style={{ backgroundColor: "white", borderTop: "1px solid rgba(162,162,162,0.3)", borderBottom: "1px solid rgba(162,162,162,0.3)" }}>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", maxWidth: 640, margin: "0 auto", padding: "12px 16px" }}>
-        {features.map(({ icon, label }) => (
-          <div key={label} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4, textAlign: "center" }}>
-            <span style={{ fontSize: 20 }}>{icon}</span>
-            <span style={{ fontFamily: "'Playfair Display', serif", color: "#885926", fontSize: 10, lineHeight: 1.3 }}>{label}</span>
-          </div>
-        ))}
+    <div style={{ backgroundColor: "white", borderTop: "0.5px solid rgba(162,162,162,0.39)", borderBottom: "0.5px solid rgba(162,162,162,0.39)", marginTop: 8 }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-around", padding: "11px 8px", gap: 0 }}>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 5 }}>
+          <BookCheckIcon />
+          <span style={{ fontFamily: "'Playfair Display', serif", color: "#885926", fontSize: 10, letterSpacing: "-0.6px", textAlign: "center" }}>High quality prints</span>
+        </div>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 5 }}>
+          <LocationIcon />
+          <span style={{ fontFamily: "'Playfair Display', serif", color: "#885926", fontSize: 10, letterSpacing: "-0.6px", textAlign: "center" }}>International shipping</span>
+        </div>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 5 }}>
+          <BookOpenIcon />
+          <span style={{ fontFamily: "'Playfair Display', serif", color: "#885926", fontSize: 10, letterSpacing: "-0.6px", textAlign: "center" }}>affordable prices</span>
+        </div>
       </div>
     </div>
   );
 }
 
-function CategoryTabs() {
+// ── Category Tabs + Cards ─────────────────────────────────────
+
+function CategorySection() {
   const [active, setActive] = useState("Aqeedah");
   const tabs = ["Aqeedah", "Hadith", "Fiqh"];
   return (
-    <section style={{ backgroundColor: "#885926" }}>
-      <div style={{ maxWidth: 640, margin: "0 auto", padding: "0 16px" }}>
-        <div style={{ display: "flex", borderBottom: "1px solid rgba(255,255,255,0.2)" }}>
-          {tabs.map((tab) => (
-            <button key={tab} onClick={() => setActive(tab)}
-              style={{ flex: 1, fontFamily: "'Playfair Display', serif", fontSize: 16, padding: "12px 0", background: "none", border: "none", borderBottom: active === tab ? "2px solid white" : "2px solid transparent", color: active === tab ? "white" : "rgba(255,253,245,0.6)", cursor: "pointer", transition: "color 0.15s" }}>
-              {tab}
-            </button>
-          ))}
+    <section style={{ backgroundColor: "#885926", borderTop: "0.5px solid #A2A2A2" }}>
+      {/* Tab row */}
+      <div style={{ display: "flex", padding: "0 0" }}>
+        {tabs.map((tab) => (
+          <button key={tab} onClick={() => setActive(tab)}
+            style={{
+              flex: 1, fontFamily: "'Playfair Display', serif", fontSize: 18, fontWeight: 400, letterSpacing: "-1.08px",
+              padding: "12px 0 10px", background: "none", border: "none",
+              borderBottom: active === tab ? "2px solid white" : "2px solid transparent",
+              color: active === tab ? "white" : "rgba(255,253,245,0.6)", cursor: "pointer"
+            }}>
+            {tab}
+          </button>
+        ))}
+      </div>
+      {/* Horizontal scroll cards */}
+      <div style={{ display: "flex", gap: 10, padding: "12px 16px 18px", overflowX: "auto", scrollbarWidth: "none" }}>
+        {Array.from({ length: 4 }).map((_, i) => (
+          <div key={i} style={{ flexShrink: 0, backgroundColor: "white", width: 107, height: 122 }} />
+        ))}
+      </div>
+      {/* Pagination dots */}
+      <div style={{ display: "flex", justifyContent: "center", gap: 8, paddingBottom: 14 }}>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <div style={{ transform: "rotate(180deg)" }}><ForwardArrow color="#FEF7FF" /></div>
         </div>
-        <div style={{ display: "flex", gap: 12, padding: "16px 0 20px", overflowX: "auto", scrollbarWidth: "none" }}>
-          {Array.from({ length: 4 }).map((_, i) => (
-            <div key={i} style={{ flexShrink: 0, backgroundColor: "white", width: 110, height: 110, borderRadius: 2 }} />
-          ))}
-        </div>
+        <div><ForwardArrow color="#FEF7FF" /></div>
       </div>
     </section>
   );
 }
 
+// ── Our Picks ─────────────────────────────────────────────────
+
 function OurPicks() {
   return (
-    <section style={{ backgroundColor: "#885926", paddingBottom: 40 }}>
-      <div style={{ maxWidth: 640, margin: "0 auto", padding: "0 16px" }}>
-        <div style={{ textAlign: "center", marginBottom: 16 }}>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", color: "white", fontSize: 20, fontWeight: 400, margin: "0 0 4px" }}>Our picks</h2>
-          <p style={{ fontFamily: "'Playfair Display', serif", color: "rgba(255,253,245,0.69)", fontSize: 14, margin: 0 }}>Learn what we recommend for you</p>
+    <section style={{ backgroundColor: "#885926", paddingBottom: 36 }}>
+      <div style={{ padding: "0 19px" }}>
+        <div style={{ textAlign: "center", marginBottom: 12 }}>
+          <h2 style={{ fontFamily: "'Playfair Display', serif", color: "white", fontSize: 20, fontWeight: 400, letterSpacing: "-1.2px", margin: "0 0 2px" }}>Our picks</h2>
+          <p style={{ fontFamily: "'Playfair Display', serif", color: "rgba(255,253,245,0.69)", fontSize: 18, letterSpacing: "-1.08px", margin: 0 }}>
+            Learn what we recommend for you
+          </p>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+        {/* 2-column grid, 3 rows */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px 7px" }}>
           {Array.from({ length: 6 }).map((_, i) => (
-            <div key={i} style={{ backgroundColor: "white", borderRadius: 2, aspectRatio: "3/4" }} />
+            <div key={i} style={{ backgroundColor: "white", height: 300 }} />
           ))}
         </div>
-        <div style={{ display: "flex", justifyContent: "center", marginTop: 24 }}>
-          <button style={{ border: "1px solid white", color: "#f3f3f3", fontFamily: "'Playfair Display', serif", fontSize: 16, padding: "6px 32px", background: "transparent", cursor: "pointer" }}>
+        {/* See all button */}
+        <div style={{ display: "flex", justifyContent: "center", marginTop: 20 }}>
+          <button style={{ border: "0.4px solid white", color: "#f3f3f3", fontFamily: "'Playfair Display', serif", fontSize: 18, letterSpacing: "-1.08px", padding: "4px 0", width: 107, background: "transparent", cursor: "pointer" }}>
             See all
           </button>
         </div>
@@ -176,25 +253,23 @@ function OurPicks() {
   );
 }
 
-function AdditionalItems({ dark = false }: { dark?: boolean }) {
-  const bg = dark ? "#0d282b" : "#fffdf5";
-  const titleColor = dark ? "white" : "black";
-  const subtitleColor = dark ? "rgba(255,253,245,0.7)" : "#867461";
-  const linkColor = dark ? "white" : "black";
-  const cardBg = dark ? "#f3f3f3" : "white";
-  const cardBorder = dark ? "none" : "1px solid #eee";
+// ── Additional Items (cream background) ───────────────────────
 
+function AdditionalItemsCream() {
   return (
-    <section style={{ backgroundColor: bg, padding: "32px 0" }}>
-      <div style={{ maxWidth: 640, margin: "0 auto", padding: "0 16px" }}>
-        <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: 4 }}>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", color: titleColor, fontSize: 24, fontWeight: 400, letterSpacing: "-0.8px", margin: 0 }}>Additional Items</h2>
-          <a href="#" style={{ fontFamily: "'Playfair Display', serif", color: linkColor, fontSize: 11, textDecoration: "none" }}>View all</a>
+    <section style={{ backgroundColor: "#fffdf5", padding: "24px 0 0" }}>
+      <div style={{ padding: "0 19px" }}>
+        <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: 2 }}>
+          <h2 style={{ fontFamily: "'Playfair Display', serif", color: "black", fontSize: 25, fontWeight: 400, letterSpacing: "-1.5px", margin: 0 }}>Additional Items</h2>
+          <span style={{ fontFamily: "'Playfair Display', serif", color: "black", fontSize: 10, letterSpacing: "-0.3px", lineHeight: 1.53 }}>View all</span>
         </div>
-        {!dark && <p style={{ fontFamily: "'Playfair Display', serif", color: subtitleColor, fontSize: 14, margin: "0 0 20px" }}>Buy that which benefits you</p>}
-        <div style={{ marginTop: dark ? 16 : 0, display: "flex", gap: 12, overflowX: "auto", scrollbarWidth: "none", paddingBottom: 4 }}>
-          {Array.from({ length: 4 }).map((_, i) => (
-            <div key={i} style={{ flexShrink: 0, backgroundColor: cardBg, width: 144, height: 200, borderRadius: 2, border: cardBorder }} />
+        <p style={{ fontFamily: "'Playfair Display', serif", color: "#867461", fontSize: 18, letterSpacing: "-1.08px", margin: "0 0 16px", textAlign: "center" }}>
+          Buy that which benefits you
+        </p>
+        {/* Horizontal scroll */}
+        <div style={{ display: "flex", gap: 10, overflowX: "auto", scrollbarWidth: "none", paddingBottom: 4 }}>
+          {Array.from({ length: 3 }).map((_, i) => (
+            <div key={i} style={{ flexShrink: 0, backgroundColor: "white", width: 150, height: 237 }} />
           ))}
         </div>
       </div>
@@ -202,43 +277,46 @@ function AdditionalItems({ dark = false }: { dark?: boolean }) {
   );
 }
 
+// ── Filters + Filtered Grid ───────────────────────────────────
+
 function FilteredGrid() {
   const [activeCategory, setActiveCategory] = useState("Clothes");
   const [activeLang, setActiveLang] = useState("English");
   const categories = ["Clothes", "Salafi pen"];
   const languages = ["Urdu", "English", "Arabic"];
 
-  const chipStyle = (active: boolean) => ({
-    fontFamily: "'Playfair Display', serif",
-    fontSize: 13,
-    padding: "4px 14px",
-    borderRadius: 20,
-    border: active ? "1px solid #885926" : "1px solid #867461",
-    backgroundColor: active ? "#885926" : "transparent",
-    color: active ? "white" : "#867461",
-    cursor: "pointer",
-    transition: "all 0.15s",
-  });
-
   return (
-    <section style={{ backgroundColor: "#fffdf5", paddingBottom: 40 }}>
-      <div style={{ maxWidth: 640, margin: "0 auto", padding: "0 16px" }}>
-        <div style={{ borderTop: "1px solid rgba(136,89,38,0.3)", marginBottom: 20 }} />
-        <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 20 }}>
-          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-            {categories.map(c => <button key={c} onClick={() => setActiveCategory(c)} style={chipStyle(activeCategory === c)}>{c}</button>)}
-          </div>
-          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-            {languages.map(l => <button key={l} onClick={() => setActiveLang(l)} style={chipStyle(activeLang === l)}>{l}</button>)}
-          </div>
-        </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
-          {Array.from({ length: 6 }).map((_, i) => (
-            <div key={i} style={{ backgroundColor: "#f3f3f3", borderRadius: 2, aspectRatio: "3/4" }} />
+    <section style={{ backgroundColor: "#fffdf5", paddingBottom: 36 }}>
+      <div style={{ padding: "0 19px" }}>
+        {/* Divider */}
+        <div style={{ borderTop: "0.4px solid #885926", margin: "18px 11px 14px" }} />
+        {/* Category filter */}
+        <div style={{ display: "flex", justifyContent: "center", gap: 16, marginBottom: 6 }}>
+          {categories.map(c => (
+            <button key={c} onClick={() => setActiveCategory(c)}
+              style={{ fontFamily: "'Playfair Display', serif", fontSize: 18, letterSpacing: "-1.08px", color: activeCategory === c ? "#885926" : "#867461", background: "none", border: "none", cursor: "pointer", fontWeight: activeCategory === c ? 700 : 400 }}>
+              {c}
+            </button>
           ))}
         </div>
-        <div style={{ display: "flex", justifyContent: "center", marginTop: 24 }}>
-          <button style={{ backgroundColor: "#885926", color: "white", fontFamily: "'Playfair Display', serif", fontSize: 18, padding: "10px 40px", border: "none", cursor: "pointer" }}>
+        {/* Language filter */}
+        <div style={{ display: "flex", justifyContent: "center", gap: 18, marginBottom: 18 }}>
+          {languages.map(l => (
+            <button key={l} onClick={() => setActiveLang(l)}
+              style={{ fontFamily: "'Playfair Display', serif", fontSize: 18, letterSpacing: "-1.08px", color: activeLang === l ? "#885926" : "#867461", background: "none", border: "none", cursor: "pointer", fontWeight: activeLang === l ? 700 : 400 }}>
+              {l}
+            </button>
+          ))}
+        </div>
+        {/* 2-column grid, 3 rows */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px 7px" }}>
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div key={i} style={{ backgroundColor: "#f3f3f3", height: 300 }} />
+          ))}
+        </div>
+        {/* Shop now */}
+        <div style={{ display: "flex", justifyContent: "center", marginTop: 28 }}>
+          <button style={{ backgroundColor: "#885926", color: "white", fontFamily: "'Playfair Display', serif", fontSize: 22, fontWeight: 400, letterSpacing: "-1.32px", padding: "9px 0", border: "none", cursor: "pointer", width: 209 }}>
             Shop now
           </button>
         </div>
@@ -247,23 +325,52 @@ function FilteredGrid() {
   );
 }
 
+// ── Footer / Menu Section ─────────────────────────────────────
+
 function FooterMenu() {
-  const pages = ["Home", "Shop", "About", "Blog", "Contact"];
-  const help = ["FAQ", "Shipping", "Returns", "Track Order"];
   return (
-    <section style={{ backgroundColor: "#885926", padding: "40px 0" }}>
-      <div style={{ maxWidth: 640, margin: "0 auto", padding: "0 24px" }}>
-        <div style={{ display: "flex", justifyContent: "center", marginBottom: 32 }}>
-          <img src={imgLogo1} alt="Logo" style={{ height: 56, objectFit: "contain" }} />
-        </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32 }}>
-          <div>
-            <h3 style={{ fontFamily: "'Playfair Display', serif", color: "white", fontSize: 18, fontWeight: 400, marginBottom: 12 }}>Pages</h3>
-            {pages.map(p => <a key={p} href="#" style={{ display: "block", fontFamily: "'Playfair Display', serif", color: "rgba(255,253,245,0.7)", fontSize: 14, textDecoration: "none", marginBottom: 8 }}>{p}</a>)}
+    <section style={{ backgroundColor: "#885926", padding: "32px 0" }}>
+      <div style={{ padding: "0 19px" }}>
+        {/* Logo left, Pages right */}
+        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between" }}>
+          <div style={{ height: 66, width: 135 }}>
+            <img src={imgLogo1} alt="Logo" style={{ height: "100%", width: "100%", objectFit: "contain", objectPosition: "left center" }} />
           </div>
           <div>
-            <h3 style={{ fontFamily: "'Playfair Display', serif", color: "white", fontSize: 18, fontWeight: 400, marginBottom: 12 }}>Help</h3>
-            {help.map(h => <a key={h} href="#" style={{ display: "block", fontFamily: "'Playfair Display', serif", color: "rgba(255,253,245,0.7)", fontSize: 14, textDecoration: "none", marginBottom: 8 }}>{h}</a>)}
+            <p style={{ fontFamily: "'Playfair Display', serif", color: "white", fontSize: 18, letterSpacing: "-1.08px", margin: "0 0 16px", textAlign: "center" }}>Pages</p>
+          </div>
+        </div>
+        {/* Help heading */}
+        <p style={{ fontFamily: "'Playfair Display', serif", color: "white", fontSize: 18, letterSpacing: "-1.08px", margin: "44px 0 0", textAlign: "center" }}>Help</p>
+      </div>
+    </section>
+  );
+}
+
+// ── Footer Carousel (dark bg) ─────────────────────────────────
+
+function FooterCarousel() {
+  return (
+    <section style={{ backgroundColor: "#0d282b", padding: "24px 0" }}>
+      <div style={{ padding: "0 19px" }}>
+        <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: 12 }}>
+          <h2 style={{ fontFamily: "'Playfair Display', serif", color: "white", fontSize: 25, fontWeight: 400, letterSpacing: "-1.5px", margin: 0 }}>Additional Items</h2>
+          <span style={{ fontFamily: "'Playfair Display', serif", color: "white", fontSize: 10, letterSpacing: "-0.3px", lineHeight: 1.53 }}>View all</span>
+        </div>
+        {/* Prev / Next buttons */}
+        <div style={{ position: "relative" }}>
+          <div style={{ display: "flex", gap: 10, overflowX: "auto", scrollbarWidth: "none", padding: "0 0 4px" }}>
+            {Array.from({ length: 3 }).map((_, i) => (
+              <div key={i} style={{ flexShrink: 0, backgroundColor: "#f3f3f3", width: 149, height: 201 }} />
+            ))}
+          </div>
+          {/* Prev button */}
+          <div style={{ position: "absolute", left: 0, top: "50%", transform: "translateY(-50%)", backgroundColor: "white", borderRadius: "50%", width: 15, height: 15, display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0px 1px 0px rgba(0,0,0,0.25)", cursor: "pointer" }}>
+            <div style={{ transform: "rotate(180deg)" }}><ForwardArrow color="#1D1B20" /></div>
+          </div>
+          {/* Next button */}
+          <div style={{ position: "absolute", right: 0, top: "50%", transform: "translateY(-50%)", backgroundColor: "white", borderRadius: "50%", width: 15, height: 15, display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0px 1px 0px rgba(0,0,0,0.25)", cursor: "pointer" }}>
+            <ForwardArrow color="#1D1B20" />
           </div>
         </div>
       </div>
@@ -271,31 +378,37 @@ function FooterMenu() {
   );
 }
 
+// ── FAQ ───────────────────────────────────────────────────────
+
 const FAQ_ITEMS = [
-  { q: "How does checkout work?", a: "Add items to your cart, proceed to checkout, enter your shipping details and complete payment via our secure gateway." },
-  { q: "Do you ship internationally?", a: "Yes! We ship worldwide. International orders may incur additional fees communicated via WhatsApp." },
-  { q: "What payment methods do you accept?", a: "We accept major credit/debit cards and bank transfers. Contact us via WhatsApp for other options." },
-  { q: "Can I return an item?", a: "Returns are accepted within 14 days of delivery for items in original condition." },
-  { q: "How long does delivery take?", a: "Domestic: 3–5 business days. International: 7–21 business days depending on location." },
+  "How does checkout work?",
+  "How does checkout work?",
+  "How does checkout work?",
+  "How does checkout work?",
+  "How does checkout work?",
 ];
 
 function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   return (
-    <section style={{ backgroundColor: "#0d282b", paddingBottom: 48, paddingTop: 8 }}>
-      <div style={{ maxWidth: 640, margin: "0 auto", padding: "0 16px" }}>
-        <h2 style={{ fontFamily: "'Playfair Display', serif", color: "#dfaf23", fontSize: 40, fontWeight: 400, textAlign: "center", letterSpacing: "-1.5px", marginBottom: 24 }}>FAQ</h2>
-        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-          {FAQ_ITEMS.map((item, i) => (
-            <div key={i} style={{ backgroundColor: "#f3f3f3", borderRadius: 2, overflow: "hidden" }}>
+    <section style={{ backgroundColor: "#0d282b", paddingBottom: 48 }}>
+      <div style={{ padding: "0 42px" }}>
+        <h2 style={{ fontFamily: "'Playfair Display', serif", color: "#dfaf23", fontSize: 40, fontWeight: 400, textAlign: "center", letterSpacing: "-2.4px", margin: "0 0 20px" }}>
+          FAQ
+        </h2>
+        <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+          {FAQ_ITEMS.map((q, i) => (
+            <div key={i} style={{ backgroundColor: "#f3f3f3", height: openIndex === i ? "auto" : 41, overflow: "hidden" }}>
               <button onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "12px 16px", background: "none", border: "none", cursor: "pointer", textAlign: "left", gap: 8 }}>
-                <span style={{ fontFamily: "'Playfair Display', serif", color: "black", fontSize: 16, lineHeight: 1.3 }}>{item.q}</span>
-                <span style={{ flexShrink: 0, color: "#1D1B20" }}><ChevronIcon open={openIndex === i} /></span>
+                style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "11px 14px", background: "none", border: "none", cursor: "pointer", height: 41 }}>
+                <span style={{ fontFamily: "'Playfair Display', serif", color: "black", fontSize: 20, fontWeight: 400, letterSpacing: "-1.2px", lineHeight: 0.95 }}>{q}</span>
+                <DropdownArrow open={openIndex === i} />
               </button>
               {openIndex === i && (
-                <div style={{ padding: "0 16px 12px" }}>
-                  <p style={{ fontFamily: "'Playfair Display', serif", color: "#555", fontSize: 14, lineHeight: 1.6, margin: 0 }}>{item.a}</p>
+                <div style={{ padding: "0 14px 12px" }}>
+                  <p style={{ fontFamily: "'Playfair Display', serif", color: "#555", fontSize: 14, lineHeight: 1.6, margin: 0 }}>
+                    Add items to your cart, proceed to checkout, enter your shipping details and complete payment via our secure gateway.
+                  </p>
                 </div>
               )}
             </div>
@@ -306,26 +419,25 @@ function FAQ() {
   );
 }
 
+// ── App ───────────────────────────────────────────────────────
+
 export default function App() {
   return (
-    <div style={{ minHeight: "100vh", backgroundColor: "#fffdf5" }}>
-      <Header />
-      <main>
-        <Hero />
-        <FeaturesBar />
-        <CategoryTabs />
-        <OurPicks />
-        <AdditionalItems />
-        <FilteredGrid />
-        <FooterMenu />
-        <AdditionalItems dark />
-        <FAQ />
-      </main>
-      <footer style={{ backgroundColor: "#0d282b", borderTop: "1px solid rgba(255,255,255,0.1)", padding: "20px 16px", textAlign: "center" }}>
-        <p style={{ fontFamily: "'Playfair Display', serif", color: "rgba(255,253,245,0.5)", fontSize: 12, margin: 0 }}>
-          &copy; {new Date().getFullYear()} Beneficial Knowledge Store. All rights reserved.
-        </p>
-      </footer>
+    <div style={{ backgroundColor: "#d6d0c8", minHeight: "100vh", display: "flex", justifyContent: "center" }}>
+      <div style={{ width: "100%", maxWidth: 430, backgroundColor: "#fffdf5" }}>
+        <Header />
+        <main>
+          <Hero />
+          <FeaturesBar />
+          <CategorySection />
+          <OurPicks />
+          <AdditionalItemsCream />
+          <FilteredGrid />
+          <FooterMenu />
+          <FooterCarousel />
+          <FAQ />
+        </main>
+      </div>
     </div>
   );
 }
