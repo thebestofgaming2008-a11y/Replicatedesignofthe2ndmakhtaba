@@ -1,493 +1,331 @@
-import svgPaths from "../imports/IPhone16114-1/svg-er0pvt7lmo";
+import { useState } from "react";
 import imgLogo from "../imports/IPhone16114-1/1f078f66de22c88e6a47117f073725c1cd3c2f37.png";
 import imgLogo1 from "../imports/IPhone16114-1/ccf3dd809cdd1e0e30aa10dec48a2c7fd354e933.png";
 
-// ─────────────────────────────────────────────────────────────
-// Sub-components (verbatim from Figma import)
-// ─────────────────────────────────────────────────────────────
-
-function HeaderContainer() {
+function MenuIcon() {
   return (
-    <div className="absolute h-[57px] left-0 top-[72px] w-[393px]" data-name="Header container">
-      <div className="absolute inset-[-0.88%_-0.13%]">
-        <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 394 58">
-          <g id="Header container">
-            <rect fill="#FFFDF5" fillOpacity="0.8" height="57.5" stroke="#A2A2A2" strokeWidth="0.5" width="393.5" x="0.25" y="0.25" />
-            {/* hamburger */}
-            <path d={svgPaths.p22163d80} fill="#111111" />
-            {/* search */}
-            <path d={svgPaths.p1b26d480} fill="#111111" />
-            {/* cart */}
-            <path d={svgPaths.p3b9806e0} fill="#111111" />
-            {/* person */}
-            <path d={svgPaths.p36724df0} fill="#111111" />
-          </g>
-        </svg>
-      </div>
-    </div>
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path d="M2 5h16M2 10h16M2 15h16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
   );
 }
 
-function NextButtonRight() {
+function SearchIcon() {
   return (
-    <div className="bg-white relative rounded-[26.087px] shadow-[0px_1px_0px_0px_rgba(0,0,0,0.25)] size-[15px]">
-      <div className="flex flex-row items-center justify-center size-full">
-        <div className="relative size-full" />
-      </div>
-    </div>
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M14 14l3.5 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
   );
 }
 
-function IconContainer() {
+function CartIcon() {
   return (
-    <div className="absolute content-stretch flex gap-[93px] items-center left-[68px] top-[546px]">
-      {/* Book Check Icon */}
-      <div className="relative shrink-0 size-[24px]">
-        <div className="absolute inset-[12.5%_16.67%]">
-          <div className="absolute inset-[-2.78%_-3.12%_-2.78%_-3.13%]">
-            <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 17 19">
-              <path d={svgPaths.p2a2acd80} stroke="#885926" />
-            </svg>
-          </div>
-        </div>
-        <div className="absolute bottom-1/2 left-[37.5%] right-[37.5%] top-[33.33%]">
-          <div className="absolute inset-[-12.5%_-8.33%_-2.14%_-8.33%]">
-            <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 7 4.58579">
-              <path d={svgPaths.pcc7f700} stroke="#885926" strokeLinecap="round" />
-            </svg>
-          </div>
-        </div>
-      </div>
-
-      {/* Location Icon */}
-      <div className="relative shrink-0 size-[24px]">
-        <div className="absolute inset-[64.58%_14.58%_10.42%_14.58%]">
-          <div className="absolute inset-[16.67%_-2.94%_-8.33%_-2.94%]">
-            <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 18 5.50007">
-              <path d={svgPaths.p6d489c0} stroke="#885926" strokeLinecap="round" />
-            </svg>
-          </div>
-        </div>
-        <div className="absolute inset-[10.42%_18.75%_18.75%_18.75%]">
-          <div className="absolute inset-[-2.94%_-3.33%_-2.28%_-3.33%]">
-            <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 16 17.8871">
-              <path d={svgPaths.p71209c0} stroke="#885926" />
-            </svg>
-          </div>
-        </div>
-        <div className="absolute bottom-[41.67%] left-[33.33%] right-[33.33%] top-1/4">
-          <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 8 8">
-            <circle cx="4" cy="4" r="3.5" stroke="#885926" />
-          </svg>
-        </div>
-      </div>
-
-      {/* Book Open Icon */}
-      <div className="relative shrink-0 size-[24px]">
-        {/* centre spine */}
-        <div className="absolute bottom-[22.92%] left-1/2 right-1/2 top-[27.08%]">
-          <div className="absolute inset-[-4.17%_-0.5px]">
-            <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 1 13">
-              <path d="M0.5 0.5V12.5" stroke="#885926" strokeLinecap="round" />
-            </svg>
-          </div>
-        </div>
-        {/* left spine */}
-        <div className="absolute inset-[27.08%_14.58%_22.92%_85.42%]">
-          <div className="absolute inset-[-4.17%_-0.5px]">
-            <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 1 13">
-              <path d="M0.5 0.5V12.5" stroke="#885926" strokeLinecap="round" />
-            </svg>
-          </div>
-        </div>
-        {/* right spine */}
-        <div className="absolute inset-[27.08%_85.42%_22.92%_14.58%]">
-          <div className="absolute inset-[-4.17%_-0.5px]">
-            <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 1 13">
-              <path d="M0.5 0.5V12.5" stroke="#885926" strokeLinecap="round" />
-            </svg>
-          </div>
-        </div>
-        {/* bottom right page edge */}
-        <div className="absolute bottom-[22.92%] left-1/2 right-[14.58%] top-[68.75%]">
-          <div className="absolute inset-[-25%_-5.88%_-25.01%_-5.88%]">
-            <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 9.50023 3.00012">
-              <path d={svgPaths.p2d8c5300} stroke="#885926" strokeLinecap="round" />
-            </svg>
-          </div>
-        </div>
-        {/* bottom left page edge (mirrored) */}
-        <div className="absolute bottom-[22.92%] flex items-center justify-center left-[14.58%] right-1/2 top-[68.75%]" style={{ containerType: "size" }}>
-          <div className="-scale-x-100 flex-none h-[100cqh] w-[100cqw]">
-            <div className="relative size-full">
-              <div className="absolute inset-[-25%_-5.88%_-25.01%_-5.88%]">
-                <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 9.50023 3.00012">
-                  <path d={svgPaths.p2d8c5300} stroke="#885926" strokeLinecap="round" />
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* top right page edge */}
-        <div className="absolute bottom-[72.92%] left-1/2 right-[14.58%] top-[18.75%]">
-          <div className="absolute inset-[-25%_-5.88%_-25.01%_-5.88%]">
-            <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 9.50023 3.00012">
-              <path d={svgPaths.p2d8c5300} stroke="#885926" strokeLinecap="round" />
-            </svg>
-          </div>
-        </div>
-        {/* top left page edge (mirrored) */}
-        <div className="absolute bottom-[72.92%] flex items-center justify-center left-[14.58%] right-1/2 top-[18.75%]" style={{ containerType: "size" }}>
-          <div className="-scale-x-100 flex-none h-[100cqh] w-[100cqw]">
-            <div className="relative size-full">
-              <div className="absolute inset-[-25%_-5.88%_-25.01%_-5.88%]">
-                <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 9.50023 3.00012">
-                  <path d={svgPaths.p2d8c5300} stroke="#885926" strokeLinecap="round" />
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path d="M3 3h2l2.5 9h8l2-6H6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="9" cy="16" r="1" fill="currentColor" />
+      <circle cx="15" cy="16" r="1" fill="currentColor" />
+    </svg>
   );
 }
 
-function ShopNowContainer() {
+function UserIcon() {
   return (
-    <div className="absolute bg-[#885926] h-[39px] left-[93px] top-[351px] w-[209px]">
-      <p className="[word-break:break-word] absolute font-['Playfair_Display',serif] font-normal leading-[0.95] left-[61px] text-[22px] text-white top-[6px] tracking-[-1.32px] whitespace-nowrap">
-        Shop now
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <circle cx="10" cy="7" r="3.5" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M3 18c0-3.314 3.134-6 7-6s7 2.686 7 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function ChevronIcon({ open }: { open: boolean }) {
+  return (
+    <svg
+      width="14" height="14" viewBox="0 0 14 14" fill="none"
+      style={{ transition: "transform 0.2s", transform: open ? "rotate(180deg)" : "rotate(0deg)" }}
+    >
+      <path d="M2 4l5 5 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  return (
+    <header style={{ position: "sticky", top: 0, zIndex: 50, backgroundColor: "rgba(255,255,255,0.95)", backdropFilter: "blur(8px)", borderBottom: "1px solid rgba(162,162,162,0.3)" }}>
+      <div style={{ backgroundColor: "#885926", color: "white", fontSize: 11, textAlign: "center", padding: "6px 16px", letterSpacing: "-0.3px" }}>
+        International order fees added on WhatsApp &nbsp;|&nbsp; INR ₹
+      </div>
+      <div style={{ position: "relative", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 16px", height: 56, maxWidth: 640, margin: "0 auto" }}>
+        <button onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu" style={{ color: "#111", background: "none", border: "none", cursor: "pointer", padding: 4, display: "flex" }}>
+          <MenuIcon />
+        </button>
+        <div style={{ position: "absolute", left: "50%", transform: "translateX(-50%)", height: 36 }}>
+          <img src={imgLogo} alt="Logo" style={{ height: "100%", width: "auto", objectFit: "contain" }} />
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: 12, color: "#111" }}>
+          <button aria-label="Search" style={{ background: "none", border: "none", cursor: "pointer", color: "inherit", display: "flex" }}><SearchIcon /></button>
+          <button aria-label="Cart" style={{ background: "none", border: "none", cursor: "pointer", color: "inherit", display: "flex" }}><CartIcon /></button>
+          <button aria-label="Account" style={{ background: "none", border: "none", cursor: "pointer", color: "inherit", display: "flex" }}><UserIcon /></button>
+        </div>
+      </div>
+      {menuOpen && (
+        <nav style={{ position: "absolute", left: 0, right: 0, backgroundColor: "white", borderBottom: "1px solid #eee", boxShadow: "0 4px 12px rgba(0,0,0,0.08)", zIndex: 40 }}>
+          <div style={{ maxWidth: 640, margin: "0 auto", padding: "8px 16px 16px" }}>
+            {["Home", "Shop", "Aqeedah", "Hadith", "Fiqh", "Additional Items", "Help"].map((item) => (
+              <a key={item} href="#" onClick={() => setMenuOpen(false)}
+                style={{ display: "block", padding: "10px 0", borderBottom: "1px solid #f3f3f3", fontFamily: "'Playfair Display', serif", fontSize: 16, color: "#111", textDecoration: "none" }}>
+                {item}
+              </a>
+            ))}
+          </div>
+        </nav>
+      )}
+    </header>
+  );
+}
+
+function Hero() {
+  return (
+    <section style={{ backgroundColor: "#fffdf5", padding: "48px 24px 40px", textAlign: "center", maxWidth: 640, margin: "0 auto" }}>
+      <p style={{ fontFamily: "'Playfair Display', serif", color: "rgba(128,96,62,0.76)", fontSize: 16, marginBottom: 8, letterSpacing: "-0.5px" }}>
+        Knowledge is better than wealth
       </p>
-    </div>
-  );
-}
-
-function LanguageContainer() {
-  return (
-    <div className="[word-break:break-word] absolute content-stretch flex font-['Playfair_Display',serif] font-normal gap-[18px] items-center leading-[0.95] left-[109px] text-[#867461] text-[18px] text-center top-[2684px] tracking-[-1.08px] whitespace-nowrap">
-      <p className="relative shrink-0">Urdu</p>
-      <p className="relative shrink-0">English</p>
-      <p className="relative shrink-0">Arabic</p>
-    </div>
-  );
-}
-
-function CategoryContainer() {
-  return (
-    <div className="[word-break:break-word] absolute content-stretch flex font-['Playfair_Display',serif] font-normal gap-[16px] items-center leading-[0.95] left-[126px] text-[#867461] text-[18px] text-center top-[2655px] tracking-[-1.08px] whitespace-nowrap">
-      <p className="relative shrink-0">Clothes</p>
-      <p className="relative shrink-0">Salafi pen</p>
-    </div>
-  );
-}
-
-function ShopNowContainer1() {
-  return (
-    <div className="absolute bg-[#885926] h-[39px] left-[92px] top-[3931px] w-[209px]">
-      <p className="[word-break:break-word] absolute font-['Playfair_Display',serif] font-normal leading-[0.95] left-[61px] text-[22px] text-white top-[6px] tracking-[-1.32px] whitespace-nowrap">
-        Shop now
-      </p>
-    </div>
-  );
-}
-
-function CurrencyAmount() {
-  return (
-    <div className="[word-break:break-word] h-[20px] leading-[1.684] relative shrink-0 text-white w-[34px]">
-      <p className="absolute font-['Playfair',serif] font-normal left-0 text-[12px] top-0 whitespace-nowrap">
-        INR
-      </p>
-      <p className="absolute font-['Philosopher',serif] h-[20px] left-[25px] text-[10px] top-[2px] w-[7px]">
-        ₹
-      </p>
-    </div>
-  );
-}
-
-function CurrencyInfo() {
-  return (
-    <div className="absolute content-stretch flex gap-[3px] items-center left-[322px] top-[42px]">
-      <div className="flex h-[14px] items-center justify-center relative shrink-0 w-[11px]">
-        <div className="-rotate-90 flex-none">
-          <div className="h-[11px] overflow-clip relative w-[14px]">
-            <div className="absolute inset-[29.17%_41.67%_29.17%_37.5%]">
-              <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 2.91667 4.58333">
-                <path d={svgPaths.p15944280} fill="white" />
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-      <CurrencyAmount />
-    </div>
-  );
-}
-
-// ─────────────────────────────────────────────────────────────
-// Main iPhone frame – absolute layout matching Figma exactly
-// ─────────────────────────────────────────────────────────────
-
-function IPhone() {
-  return (
-    <div className="bg-[#fffdf5] relative" style={{ width: 393, height: 5247 }}>
-      {/* ── Background colour blocks ── */}
-      <div className="absolute bg-[#fffdf5] h-[1449px] left-0 top-[2615px] w-[393px]" />
-      <div className="absolute bg-[#885926] h-[1571px] left-0 top-[588px] w-[393px]">
-        <div aria-hidden className="absolute border-[#a2a2a2] border-[0.5px] border-solid inset-[-0.5px] pointer-events-none" />
-      </div>
-      <div className="absolute bg-[#0d282b] h-[797px] left-0 top-[4450px] w-[393px]" />
-      <div className="absolute bg-[#885926] h-[408px] left-0 top-[4042px] w-[393px]" />
-
-      {/* ── Notification bar ── */}
-      <div className="absolute bg-[#885926] h-[40px] left-0 top-[32px] w-[393px]" />
-      <p className="[word-break:break-word] absolute font-['Playfair_Display',serif] font-normal h-[11px] leading-[0.95] left-[96px] text-[12px] text-white top-[46px] tracking-[-0.72px] w-[201px]" dir="auto">
-        International order fees added on whatspp
-      </p>
-      <CurrencyInfo />
-
-      {/* ── Header ── */}
-      <HeaderContainer />
-
-      {/* ── Logo (header) ── */}
-      <div className="absolute h-[45px] left-[151px] top-[75px] w-[92px]">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgLogo} />
-      </div>
-
-      {/* ── Hero text ── */}
-      <p className="[word-break:break-word] absolute font-['Playfair_Display',serif] font-normal h-[38px] leading-[0.95] left-[93px] text-[#885926] text-[40px] top-[208px] tracking-[-2.4px] w-[210px]">
+      <h1 style={{ fontFamily: "'Playfair Display', serif", color: "#885926", fontSize: "clamp(36px, 10vw, 52px)", fontWeight: 400, lineHeight: 1.05, letterSpacing: "-2px", margin: "0 0 4px" }}>
         Finally afford
-      </p>
-      <p className="-translate-x-1/2 [word-break:break-word] absolute font-['Playfair_Display',serif] font-normal italic leading-[0.95] left-[197px] text-[#885926] text-[42px] text-center top-[245px] tracking-[-2.52px] whitespace-nowrap">
+      </h1>
+      <h2 style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic", color: "#885926", fontSize: "clamp(28px, 8vw, 44px)", fontWeight: 400, lineHeight: 1.1, letterSpacing: "-1.5px", margin: "0 0 32px" }}>
         Beneficial knowledge
-      </p>
-      <p className="[word-break:break-word] absolute font-['Playfair_Display',serif] font-normal h-[17px] leading-[0.95] left-[80px] text-[18px] text-[rgba(128,96,62,0.76)] top-[307px] tracking-[-1.08px] w-[229px]" dir="auto">
-        {`Knowledge is better than wealth `}
-      </p>
-      <ShopNowContainer />
-      <p className="[word-break:break-word] absolute font-['Playfair_Display',serif] font-normal leading-[0.95] left-[125px] text-[#885926] text-[22px] top-[408px] tracking-[-1.32px] whitespace-nowrap">
-        Browse add-ons
-      </p>
-
-      {/* ── Features bar ── */}
-      <div className="absolute bg-white h-[46px] left-px top-[542px] w-[393px]">
-        <div aria-hidden className="absolute border-[0.5px] border-[rgba(162,162,162,0.39)] border-solid inset-[-0.25px] pointer-events-none" />
+      </h2>
+      <div style={{ display: "flex", flexDirection: "column", gap: 12, alignItems: "center" }}>
+        <button style={{ backgroundColor: "#885926", color: "white", fontFamily: "'Playfair Display', serif", fontSize: 18, padding: "10px 40px", border: "none", cursor: "pointer", width: "100%", maxWidth: 280 }}>
+          Shop now
+        </button>
+        <button style={{ backgroundColor: "transparent", color: "#885926", fontFamily: "'Playfair Display', serif", fontSize: 18, padding: "10px 40px", border: "1px solid #885926", cursor: "pointer", width: "100%", maxWidth: 280 }}>
+          Browse add-ons
+        </button>
       </div>
-      <IconContainer />
-      <p className="-translate-x-1/2 [word-break:break-word] absolute font-['Playfair_Display',serif] font-normal leading-[0.95] left-[82px] text-[#885926] text-[10px] text-center top-[570px] tracking-[-0.6px] whitespace-nowrap">
-        High quality prints
-      </p>
-      <p className="-translate-x-1/2 [word-break:break-word] absolute font-['Playfair_Display',serif] font-normal leading-[0.95] left-[200px] text-[#885926] text-[10px] text-center top-[570px] tracking-[-0.6px] whitespace-nowrap">
-        International shipping
-      </p>
-      <p className="-translate-x-1/2 [word-break:break-word] absolute font-['Playfair_Display',serif] font-normal leading-[0.95] left-[314.5px] text-[#885926] text-[10px] text-center top-[570px] tracking-[-0.6px] whitespace-nowrap">
-        affordable prices
-      </p>
+    </section>
+  );
+}
 
-      {/* ── Brown section – category tabs ── */}
-      <p className="[word-break:break-word] absolute font-['Playfair_Display',serif] font-normal leading-[0.95] left-[48px] text-[18px] text-white top-[649px] tracking-[-1.08px] whitespace-nowrap">
-        Aqeedah
-      </p>
-      <p className="[word-break:break-word] absolute font-['Playfair_Display',serif] font-normal leading-[0.95] left-[171px] text-[18px] text-white top-[649px] tracking-[-1.08px] whitespace-nowrap">
-        Hadith
-      </p>
-      <p className="[word-break:break-word] absolute font-['Playfair_Display',serif] font-normal leading-[0.95] left-[295px] text-[18px] text-white top-[649px] tracking-[-1.08px] whitespace-nowrap">
-        Fiqh
-      </p>
-
-      {/* ── Category product cards (horizontal) ── */}
-      <div className="absolute bg-white h-[122px] left-[26px] top-[676px] w-[107px]" />
-      <div className="absolute bg-white h-[122px] left-[142px] top-[676px] w-[107px]" />
-      <div className="absolute bg-white h-[122px] left-[258px] top-[676px] w-[107px]" />
-      <div className="absolute bg-white h-[122px] left-[374px] top-[676px] w-[107px]" />
-
-      {/* ── Our picks nav arrows ── */}
-      <div className="absolute left-[202px] overflow-clip size-[10px] top-[827px]">
-        <div className="absolute inset-[16.67%]">
-          <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 6.66667 6.66667">
-            <path d={svgPaths.pe751d80} fill="#FEF7FF" />
-          </svg>
-        </div>
-      </div>
-      <div className="absolute flex items-center justify-center left-[182px] size-[10px] top-[827px]">
-        <div className="-scale-y-100 flex-none rotate-180">
-          <div className="overflow-clip relative size-[10px]">
-            <div className="absolute inset-[16.67%]">
-              <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 6.66667 6.66667">
-                <path d={svgPaths.pe751d80} fill="#FEF7FF" />
-              </svg>
-            </div>
+function FeaturesBar() {
+  const features = [
+    { icon: "📖", label: "High quality prints" },
+    { icon: "🌍", label: "International shipping" },
+    { icon: "💰", label: "Affordable prices" },
+  ];
+  return (
+    <div style={{ backgroundColor: "white", borderTop: "1px solid rgba(162,162,162,0.3)", borderBottom: "1px solid rgba(162,162,162,0.3)" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", maxWidth: 640, margin: "0 auto", padding: "12px 16px" }}>
+        {features.map(({ icon, label }) => (
+          <div key={label} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4, textAlign: "center" }}>
+            <span style={{ fontSize: 20 }}>{icon}</span>
+            <span style={{ fontFamily: "'Playfair Display', serif", color: "#885926", fontSize: 10, lineHeight: 1.3 }}>{label}</span>
           </div>
-        </div>
+        ))}
       </div>
-
-      {/* ── Our picks heading ── */}
-      <p className="[word-break:break-word] absolute font-['Playfair_Display',serif] font-normal h-[19px] leading-[0.95] left-[158px] text-[20px] text-white top-[881px] tracking-[-1.2px] w-[78px]">
-        Our picks
-      </p>
-      <p className="-translate-x-1/2 [word-break:break-word] absolute font-['Playfair_Display',serif] font-normal leading-[0.95] left-[197px] text-[18px] text-[rgba(255,253,245,0.69)] text-center top-[903px] tracking-[-1.08px] whitespace-nowrap">
-        Learn what we recommend for you
-      </p>
-
-      {/* ── Our picks – 2×3 white product cards ── */}
-      <div className="absolute bg-white h-[300px] left-[19px] top-[938px] w-[174px]" />
-      <div className="absolute bg-white h-[300px] left-[200px] top-[938px] w-[174px]" />
-      <div className="absolute bg-white h-[300px] left-[19px] top-[1343px] w-[174px]" />
-      <div className="absolute bg-white h-[300px] left-[200px] top-[1343px] w-[174px]" />
-      <div className="absolute bg-white h-[300px] left-[19px] top-[1748px] w-[174px]" />
-      <div className="absolute bg-white h-[300px] left-[200px] top-[1748px] w-[174px]" />
-
-      {/* ── See all button ── */}
-      <div className="absolute bg-[rgba(0,0,0,0)] border-[0.4px] border-solid border-white h-[28px] left-[143px] top-[2088px] w-[107px]" />
-      <p className="[word-break:break-word] absolute font-['Playfair_Display',serif] font-normal leading-[0.95] left-[176px] text-[#f3f3f3] text-[18px] top-[2093px] tracking-[-1.08px] whitespace-nowrap">
-        See all
-      </p>
-
-      {/* ── Additional Items (cream section) ── */}
-      <p className="[word-break:break-word] absolute font-['Playfair_Display',serif] font-normal leading-[0.95] left-[19px] text-[25px] text-black top-[2223px] tracking-[-1.5px] whitespace-nowrap">
-        Additional Items
-      </p>
-      <p className="-translate-x-1/2 [word-break:break-word] absolute font-['Playfair_Display',serif] font-normal leading-[0.95] left-[116.5px] text-[#867461] text-[18px] text-center top-[2253px] tracking-[-1.08px] whitespace-nowrap">
-        Buy that which benefits you
-      </p>
-      <p className="[word-break:break-word] absolute font-['Playfair_Display',serif] font-normal leading-[1.53] left-[339px] text-[10px] text-black top-[2257px] tracking-[-0.3px] whitespace-nowrap">
-        View all
-      </p>
-
-      {/* ── Additional Items product images ── */}
-      <div className="absolute bg-white h-[237px] left-[19px] top-[2288px] w-[150px]" />
-      <div className="absolute bg-white h-[237px] left-[179px] top-[2288px] w-[150px]" />
-      <div className="absolute bg-white h-[237px] left-[339px] top-[2288px] w-[150px]" />
-
-      {/* ── Divider line ── */}
-      <div className="absolute h-0 left-[30px] top-[2723px] w-[334px]">
-        <div className="absolute inset-[-0.4px_0_0_0]">
-          <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 334 0.4">
-            <line stroke="#885926" strokeWidth="0.4" x2="334" y1="0.2" y2="0.2" />
-          </svg>
-        </div>
-      </div>
-
-      {/* ── Category / Language filters ── */}
-      <CategoryContainer />
-      <LanguageContainer />
-
-      {/* ── Gray product cards grid ── */}
-      <div className="absolute bg-[#f3f3f3] h-[300px] left-[19px] top-[2767px] w-[174px]" />
-      <div className="absolute bg-[#f3f3f3] h-[300px] left-[200px] top-[2767px] w-[174px]" />
-      <div className="absolute bg-[#f3f3f3] h-[300px] left-[19px] top-[3155px] w-[174px]" />
-      <div className="absolute bg-[#f3f3f3] h-[300px] left-[200px] top-[3155px] w-[174px]" />
-      <div className="absolute bg-[#f3f3f3] h-[300px] left-[19px] top-[3543px] w-[174px]" />
-      <div className="absolute bg-[#f3f3f3] h-[300px] left-[200px] top-[3543px] w-[174px]" />
-
-      {/* ── Shop now (second) ── */}
-      <ShopNowContainer1 />
-
-      {/* ── Menu section ── */}
-      <div className="absolute h-[66px] left-[19px] top-[4090px] w-[135px]">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgLogo1} />
-      </div>
-      <p className="-translate-x-1/2 [word-break:break-word] absolute font-['Playfair_Display',serif] font-normal leading-[0.95] left-[221px] text-[18px] text-center text-white top-[4090px] tracking-[-1.08px] whitespace-nowrap">
-        Pages
-      </p>
-      <p className="-translate-x-1/2 [word-break:break-word] absolute font-['Playfair_Display',serif] font-normal leading-[0.95] left-[217.5px] text-[18px] text-center text-white top-[4270px] tracking-[-1.08px] whitespace-nowrap">
-        Help
-      </p>
-
-      {/* ── Footer – Additional Items carousel ── */}
-      <p className="[word-break:break-word] absolute font-['Playfair_Display',serif] font-normal leading-[0.95] left-[115px] text-[25px] text-white top-[4482px] tracking-[-1.5px] whitespace-nowrap">
-        Additional Items
-      </p>
-      <p className="[word-break:break-word] absolute font-['Playfair_Display',serif] font-normal leading-[1.53] left-[348px] text-[10px] text-white top-[4506px] tracking-[-0.3px] whitespace-nowrap">
-        View all
-      </p>
-
-      {/* Carousel prev button */}
-      <div className="absolute flex items-center justify-center left-[12px] size-[15px] top-[4608px]">
-        <div className="flex-none rotate-180">
-          <NextButtonRight />
-        </div>
-      </div>
-      <div className="absolute flex items-center justify-center left-[15px] size-[10px] top-[4611px]">
-        <div className="-scale-y-100 flex-none rotate-180">
-          <div className="overflow-clip relative size-[10px]">
-            <div className="absolute inset-[16.67%]">
-              <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 6.66667 6.66667">
-                <path d={svgPaths.pe751d80} fill="#1D1B20" />
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Carousel next button */}
-      <div className="absolute flex items-center justify-center left-[366px] size-[15px] top-[4608px]">
-        <div className="-scale-y-100 flex-none">
-          <NextButtonRight />
-        </div>
-      </div>
-      <div className="absolute left-[369px] overflow-clip size-[10px] top-[4611px]">
-        <div className="absolute inset-[16.67%]">
-          <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 6.66667 6.66667">
-            <path d={svgPaths.pe751d80} fill="#1D1B20" />
-          </svg>
-        </div>
-      </div>
-
-      {/* Carousel product images */}
-      <div className="absolute bg-[#f3f3f3] h-[201px] left-[-42px] top-[4528px] w-[149px]" />
-      <div className="absolute bg-[#f3f3f3] h-[201px] left-[122px] top-[4528px] w-[149px]" />
-      <div className="absolute bg-[#f3f3f3] h-[201px] left-[286px] top-[4528px] w-[149px]" />
-
-      {/* ── FAQ ── */}
-      <p className="[word-break:break-word] absolute font-['Playfair_Display',serif] font-normal leading-[0.95] left-[161px] text-[#dfaf23] text-[40px] top-[4913px] tracking-[-2.4px] whitespace-nowrap">
-        FAQ
-      </p>
-
-      {/* FAQ rows */}
-      {([4989, 5035, 5081, 5127, 5173] as const).map((top, i) => (
-        <div key={i}>
-          <div className="absolute bg-[#f3f3f3] h-[41px] left-[42px] w-[309px]" style={{ top }} />
-          <p
-            className="[word-break:break-word] absolute font-['Playfair_Display',serif] font-normal h-[19px] leading-[0.95] left-[56px] text-[20px] text-black tracking-[-1.2px] w-[207px]"
-            style={{ top: top + 11 }}
-          >
-            How does checkout work?
-          </p>
-          {/* Dropdown chevron */}
-          <div className="absolute flex items-center justify-center left-[330px] size-[15px]" style={{ top: top + 13 }}>
-            <div className="flex-none rotate-180">
-              <div className="overflow-clip relative size-[15px]">
-                <div className="absolute inset-[37.5%_29.17%_41.67%_29.17%]">
-                  <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 6.25 3.125">
-                    <path d={svgPaths.p243c3400} fill="#1D1B20" />
-                  </svg>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      ))}
     </div>
   );
 }
 
-// ─────────────────────────────────────────────────────────────
-// App shell – centres the 393 px phone on any screen
-// ─────────────────────────────────────────────────────────────
+function CategoryTabs() {
+  const [active, setActive] = useState("Aqeedah");
+  const tabs = ["Aqeedah", "Hadith", "Fiqh"];
+  return (
+    <section style={{ backgroundColor: "#885926" }}>
+      <div style={{ maxWidth: 640, margin: "0 auto", padding: "0 16px" }}>
+        <div style={{ display: "flex", borderBottom: "1px solid rgba(255,255,255,0.2)" }}>
+          {tabs.map((tab) => (
+            <button key={tab} onClick={() => setActive(tab)}
+              style={{ flex: 1, fontFamily: "'Playfair Display', serif", fontSize: 16, padding: "12px 0", background: "none", border: "none", borderBottom: active === tab ? "2px solid white" : "2px solid transparent", color: active === tab ? "white" : "rgba(255,253,245,0.6)", cursor: "pointer", transition: "color 0.15s" }}>
+              {tab}
+            </button>
+          ))}
+        </div>
+        <div style={{ display: "flex", gap: 12, padding: "16px 0 20px", overflowX: "auto", scrollbarWidth: "none" }}>
+          {Array.from({ length: 4 }).map((_, i) => (
+            <div key={i} style={{ flexShrink: 0, backgroundColor: "white", width: 110, height: 110, borderRadius: 2 }} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function OurPicks() {
+  return (
+    <section style={{ backgroundColor: "#885926", paddingBottom: 40 }}>
+      <div style={{ maxWidth: 640, margin: "0 auto", padding: "0 16px" }}>
+        <div style={{ textAlign: "center", marginBottom: 16 }}>
+          <h2 style={{ fontFamily: "'Playfair Display', serif", color: "white", fontSize: 20, fontWeight: 400, margin: "0 0 4px" }}>Our picks</h2>
+          <p style={{ fontFamily: "'Playfair Display', serif", color: "rgba(255,253,245,0.69)", fontSize: 14, margin: 0 }}>Learn what we recommend for you</p>
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div key={i} style={{ backgroundColor: "white", borderRadius: 2, aspectRatio: "3/4" }} />
+          ))}
+        </div>
+        <div style={{ display: "flex", justifyContent: "center", marginTop: 24 }}>
+          <button style={{ border: "1px solid white", color: "#f3f3f3", fontFamily: "'Playfair Display', serif", fontSize: 16, padding: "6px 32px", background: "transparent", cursor: "pointer" }}>
+            See all
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function AdditionalItems({ dark = false }: { dark?: boolean }) {
+  const bg = dark ? "#0d282b" : "#fffdf5";
+  const titleColor = dark ? "white" : "black";
+  const subtitleColor = dark ? "rgba(255,253,245,0.7)" : "#867461";
+  const linkColor = dark ? "white" : "black";
+  const cardBg = dark ? "#f3f3f3" : "white";
+  const cardBorder = dark ? "none" : "1px solid #eee";
+
+  return (
+    <section style={{ backgroundColor: bg, padding: "32px 0" }}>
+      <div style={{ maxWidth: 640, margin: "0 auto", padding: "0 16px" }}>
+        <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: 4 }}>
+          <h2 style={{ fontFamily: "'Playfair Display', serif", color: titleColor, fontSize: 24, fontWeight: 400, letterSpacing: "-0.8px", margin: 0 }}>Additional Items</h2>
+          <a href="#" style={{ fontFamily: "'Playfair Display', serif", color: linkColor, fontSize: 11, textDecoration: "none" }}>View all</a>
+        </div>
+        {!dark && <p style={{ fontFamily: "'Playfair Display', serif", color: subtitleColor, fontSize: 14, margin: "0 0 20px" }}>Buy that which benefits you</p>}
+        <div style={{ marginTop: dark ? 16 : 0, display: "flex", gap: 12, overflowX: "auto", scrollbarWidth: "none", paddingBottom: 4 }}>
+          {Array.from({ length: 4 }).map((_, i) => (
+            <div key={i} style={{ flexShrink: 0, backgroundColor: cardBg, width: 144, height: 200, borderRadius: 2, border: cardBorder }} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FilteredGrid() {
+  const [activeCategory, setActiveCategory] = useState("Clothes");
+  const [activeLang, setActiveLang] = useState("English");
+  const categories = ["Clothes", "Salafi pen"];
+  const languages = ["Urdu", "English", "Arabic"];
+
+  const chipStyle = (active: boolean) => ({
+    fontFamily: "'Playfair Display', serif",
+    fontSize: 13,
+    padding: "4px 14px",
+    borderRadius: 20,
+    border: active ? "1px solid #885926" : "1px solid #867461",
+    backgroundColor: active ? "#885926" : "transparent",
+    color: active ? "white" : "#867461",
+    cursor: "pointer",
+    transition: "all 0.15s",
+  });
+
+  return (
+    <section style={{ backgroundColor: "#fffdf5", paddingBottom: 40 }}>
+      <div style={{ maxWidth: 640, margin: "0 auto", padding: "0 16px" }}>
+        <div style={{ borderTop: "1px solid rgba(136,89,38,0.3)", marginBottom: 20 }} />
+        <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 20 }}>
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+            {categories.map(c => <button key={c} onClick={() => setActiveCategory(c)} style={chipStyle(activeCategory === c)}>{c}</button>)}
+          </div>
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+            {languages.map(l => <button key={l} onClick={() => setActiveLang(l)} style={chipStyle(activeLang === l)}>{l}</button>)}
+          </div>
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div key={i} style={{ backgroundColor: "#f3f3f3", borderRadius: 2, aspectRatio: "3/4" }} />
+          ))}
+        </div>
+        <div style={{ display: "flex", justifyContent: "center", marginTop: 24 }}>
+          <button style={{ backgroundColor: "#885926", color: "white", fontFamily: "'Playfair Display', serif", fontSize: 18, padding: "10px 40px", border: "none", cursor: "pointer" }}>
+            Shop now
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FooterMenu() {
+  const pages = ["Home", "Shop", "About", "Blog", "Contact"];
+  const help = ["FAQ", "Shipping", "Returns", "Track Order"];
+  return (
+    <section style={{ backgroundColor: "#885926", padding: "40px 0" }}>
+      <div style={{ maxWidth: 640, margin: "0 auto", padding: "0 24px" }}>
+        <div style={{ display: "flex", justifyContent: "center", marginBottom: 32 }}>
+          <img src={imgLogo1} alt="Logo" style={{ height: 56, objectFit: "contain" }} />
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32 }}>
+          <div>
+            <h3 style={{ fontFamily: "'Playfair Display', serif", color: "white", fontSize: 18, fontWeight: 400, marginBottom: 12 }}>Pages</h3>
+            {pages.map(p => <a key={p} href="#" style={{ display: "block", fontFamily: "'Playfair Display', serif", color: "rgba(255,253,245,0.7)", fontSize: 14, textDecoration: "none", marginBottom: 8 }}>{p}</a>)}
+          </div>
+          <div>
+            <h3 style={{ fontFamily: "'Playfair Display', serif", color: "white", fontSize: 18, fontWeight: 400, marginBottom: 12 }}>Help</h3>
+            {help.map(h => <a key={h} href="#" style={{ display: "block", fontFamily: "'Playfair Display', serif", color: "rgba(255,253,245,0.7)", fontSize: 14, textDecoration: "none", marginBottom: 8 }}>{h}</a>)}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const FAQ_ITEMS = [
+  { q: "How does checkout work?", a: "Add items to your cart, proceed to checkout, enter your shipping details and complete payment via our secure gateway." },
+  { q: "Do you ship internationally?", a: "Yes! We ship worldwide. International orders may incur additional fees communicated via WhatsApp." },
+  { q: "What payment methods do you accept?", a: "We accept major credit/debit cards and bank transfers. Contact us via WhatsApp for other options." },
+  { q: "Can I return an item?", a: "Returns are accepted within 14 days of delivery for items in original condition." },
+  { q: "How long does delivery take?", a: "Domestic: 3–5 business days. International: 7–21 business days depending on location." },
+];
+
+function FAQ() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  return (
+    <section style={{ backgroundColor: "#0d282b", paddingBottom: 48, paddingTop: 8 }}>
+      <div style={{ maxWidth: 640, margin: "0 auto", padding: "0 16px" }}>
+        <h2 style={{ fontFamily: "'Playfair Display', serif", color: "#dfaf23", fontSize: 40, fontWeight: 400, textAlign: "center", letterSpacing: "-1.5px", marginBottom: 24 }}>FAQ</h2>
+        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+          {FAQ_ITEMS.map((item, i) => (
+            <div key={i} style={{ backgroundColor: "#f3f3f3", borderRadius: 2, overflow: "hidden" }}>
+              <button onClick={() => setOpenIndex(openIndex === i ? null : i)}
+                style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "12px 16px", background: "none", border: "none", cursor: "pointer", textAlign: "left", gap: 8 }}>
+                <span style={{ fontFamily: "'Playfair Display', serif", color: "black", fontSize: 16, lineHeight: 1.3 }}>{item.q}</span>
+                <span style={{ flexShrink: 0, color: "#1D1B20" }}><ChevronIcon open={openIndex === i} /></span>
+              </button>
+              {openIndex === i && (
+                <div style={{ padding: "0 16px 12px" }}>
+                  <p style={{ fontFamily: "'Playfair Display', serif", color: "#555", fontSize: 14, lineHeight: 1.6, margin: 0 }}>{item.a}</p>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export default function App() {
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        background: "#d6d0c8",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "flex-start",
-      }}
-    >
-      <IPhone />
+    <div style={{ minHeight: "100vh", backgroundColor: "#fffdf5" }}>
+      <Header />
+      <main>
+        <Hero />
+        <FeaturesBar />
+        <CategoryTabs />
+        <OurPicks />
+        <AdditionalItems />
+        <FilteredGrid />
+        <FooterMenu />
+        <AdditionalItems dark />
+        <FAQ />
+      </main>
+      <footer style={{ backgroundColor: "#0d282b", borderTop: "1px solid rgba(255,255,255,0.1)", padding: "20px 16px", textAlign: "center" }}>
+        <p style={{ fontFamily: "'Playfair Display', serif", color: "rgba(255,253,245,0.5)", fontSize: 12, margin: 0 }}>
+          &copy; {new Date().getFullYear()} Beneficial Knowledge Store. All rights reserved.
+        </p>
+      </footer>
     </div>
   );
 }
