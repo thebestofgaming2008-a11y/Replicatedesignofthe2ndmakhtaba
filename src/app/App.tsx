@@ -351,67 +351,44 @@ function FeaturesBar() {
   );
 }
 
-// ── Category Tabs + Cards ─────────────────────────────────────
-// Figma: bg #885926, tab labels at left 48/171/295 in 393px space
-// Cards: top 676, left 26, width 107, height 122; next at left 142, 258, 374
-// Gap between 26→142 = 116, card width 107, so gap = 9px
-// Pagination: 2 forward arrows at ~182px and 202px
+// ── Category Cards ────────────────────────────────────────────
+// Each category is a card with the title label below the image area
 
 function CategorySection() {
-  const [active, setActive] = useState("Aqeedah");
-  const tabs = ["Aqeedah", "Hadith", "Fiqh"];
+  const categories = ["Aqeedah", "Hadith", "Fiqh"];
   return (
-    <section style={{ backgroundColor: "#885926", borderTop: "0.5px solid #A2A2A2" }}>
-      {/* Tab row: exact positions from Figma */}
-      <div style={{ display: "flex", padding: "0 0" }}>
-        {tabs.map((tab) => (
-          <button
-            key={tab}
-            onClick={() => setActive(tab)}
-            style={{
-              flex: 1,
+    <section style={{ backgroundColor: "#885926", borderTop: "0.5px solid #A2A2A2", padding: "16px 0 18px" }}>
+      {/* Horizontal scroll: cards 107×122 with category title below */}
+      <div style={{
+        display: "flex",
+        gap: 9,
+        padding: "0 26px",
+        overflowX: "auto",
+        scrollbarWidth: "none",
+      }}>
+        {categories.map((category) => (
+          <div key={category} style={{ flexShrink: 0, display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
+            <div style={{ backgroundColor: "white", width: 107, height: 122 }} />
+            <span style={{
               fontFamily: "'Playfair Display', serif",
               fontSize: 18,
               fontWeight: 400,
               letterSpacing: "-1.08px",
               lineHeight: 0.95,
-              padding: "13px 0 11px",
-              background: "none",
-              border: "none",
-              borderBottom: active === tab ? "2px solid white" : "2px solid transparent",
-              color: active === tab ? "white" : "rgba(255,253,245,0.6)",
-              cursor: "pointer",
+              color: "white",
               whiteSpace: "nowrap",
-            }}
-          >
-            {tab}
-          </button>
+            }}>
+              {category}
+            </span>
+          </div>
         ))}
       </div>
-      {/* Horizontal scroll: cards 107×122 */}
-      <div style={{
-        display: "flex",
-        gap: 9,
-        padding: "12px 26px 18px",
-        overflowX: "auto",
-        scrollbarWidth: "none",
-      }}>
-        {Array.from({ length: 5 }).map((_, i) => (
-          <div key={i} style={{ flexShrink: 0, backgroundColor: "white", width: 107, height: 122 }} />
-        ))}
-      </div>
-      {/* Pagination arrows – exact: left arrow at 182px, right at 202px (in 393px → ~46%/51%) */}
-      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 10, paddingBottom: 16 }}>
-        <div style={{
-          backgroundColor: "transparent",
-          display: "flex", alignItems: "center", justifyContent: "center",
-        }}>
+      {/* Pagination arrows */}
+      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 10, paddingTop: 14 }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
           <BackArrow color="#FEF7FF" size={10} />
         </div>
-        <div style={{
-          backgroundColor: "transparent",
-          display: "flex", alignItems: "center", justifyContent: "center",
-        }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
           <ForwardArrow color="#FEF7FF" size={10} />
         </div>
       </div>
